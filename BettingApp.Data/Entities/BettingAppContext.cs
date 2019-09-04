@@ -1,4 +1,5 @@
 ﻿using BettingApp.Data.Entities.Models;
+using BettingApp.Data.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,19 @@ namespace BettingApp.Data.Entities
                 .HasOne(tm => tm.Team)
                 .WithMany(m => m.TeamMatches)
                 .HasForeignKey(tm => tm.TeamId);
+
+            modelBuilder.Entity<Pair>()
+                .Property(p => p.Status)
+                .HasConversion(
+                    p => p.ToString(),
+                    p => (PairStatus)Enum.Parse(typeof(PairStatus), p)
+                );
+            modelBuilder.Entity<Ticket>()
+                .Property(t => t.Status)
+                .HasConversion(
+                    t => t.ToString(),
+                    t => (TicketStatus)Enum.Parse(typeof(PairStatus), t)
+                );
         }
     }
 }

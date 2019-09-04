@@ -1,4 +1,6 @@
 using BettingApp.Data.Entities;
+using BettingApp.Domain.Repositories.Implementations;
+using BettingApp.Domain.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +29,9 @@ namespace BettingApp
         {
             services.AddDbContext<BettingAppContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BettingAppContext")));
+
+            services.AddScoped<IPairRepository, PairRepository>();
+            services.AddScoped<IMatchRepository, MatchRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
                 {

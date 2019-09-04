@@ -1,0 +1,24 @@
+.pair-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.pair-list__pair {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pair__quotas {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.quotas__quota {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1px 2px;
+    width: 40px;
+    text-align: center;
+}
