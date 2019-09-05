@@ -1,24 +1,29 @@
 .pair-list {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	width: 1440px;
 }
 
 .pair-list__pair {
-    display:flex;
-    justify-content: space-around;
+	display: flex;
+	justify-content: space-between;
     align-items: center;
+    font-size: 27px;
+    padding: 12px;
+    border: 1px solid black;
 }
 
 .pair__quotas {
-    display: flex;
+	display: flex;
     justify-content: space-between;
-    width: 40%;
+    width: 600px;
 }
 
 .quotas__quota {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 1px 2px;
-    width: 40px;
+	border: 1px solid black;
+	padding: 1px 2px;
+	width: 70px;
     text-align: center;
+    background-color: black;
+    color: white;
 }

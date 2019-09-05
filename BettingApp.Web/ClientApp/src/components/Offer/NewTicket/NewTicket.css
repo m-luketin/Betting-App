@@ -1,0 +1,52 @@
+.new-ticket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 479px;
+    height: 1000px;
+    font-size: 25px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.new-ticket__title {
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    border-top: 1px solid white;
+    padding: 20px 0;
+}
+
+.new-ticket__bottom {
+    margin: 15px;
+}
+
+.new-ticket__bet, .new-ticket__total {
+    display:flex;
+    justify-content: space-between;
+    width: 350px;
+    font-weight: 600;
+    margin: 15px 30px;
+}
+
+.bet__input {
+    width: 130px;
+    text-align: center;
+}
+
+.total__number {
+    text-align: center;
+    width: 130px;
+}
+
+.new-ticket__button {
+    display: block;
+    height: 40px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+}

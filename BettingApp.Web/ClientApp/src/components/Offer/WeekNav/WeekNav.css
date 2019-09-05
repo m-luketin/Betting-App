@@ -1,0 +1,28 @@
+.week-nav {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 478px;
+    height: 250px;
+}
+
+.week-nav__row {
+    display:flex;
+    justify-content: space-between;
+}
+
+.weekday-button {
+    width: 159px;
+    height: 83px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    z-index: 2;
+}
+
+.weekday-button--wide {
+    width: 318px;
+}

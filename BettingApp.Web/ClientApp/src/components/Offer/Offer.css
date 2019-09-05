@@ -1,0 +1,16 @@
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: sans-serif;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 480px;
+    height: 1120px;
+    background-color: red;
+    border: 1px solid black;
+}
