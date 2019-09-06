@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import './PairList.css';
 
 class PairList extends Component {
@@ -7,25 +6,13 @@ class PairList extends Component {
 		super(props);
 
 		this.state = {
-			pairs: []
 		};
 	}
-
-	componentDidMount() {
-		Axios.get(`api/match/date/${this.props.currentDate}`)
-			.then(response => {
-				console.log(...response.data);
-				this.setState({ pairs: [...response.data] });
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}
-
+	
 	render() {
 		return (
 			<div className='pair-list'>
-				{this.state.pairs.map(item => {
+				{this.props.pairs.map(item => {
 					return (
 						<div className='pair-list__pair'>
 							<div>{item.startsAt.substring(11, 16)}</div>

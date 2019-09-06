@@ -11,6 +11,6 @@ main {
     justify-content: space-around;
     width: 480px;
     height: 1120px;
-    background-color: red;
+    background-color: darkgreen;
     border: 1px solid black;
 }

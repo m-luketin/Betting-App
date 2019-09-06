@@ -25,7 +25,7 @@ namespace BettingApp.Domain.Repositories.Implementations
             return matchesToGet;
         }
 
-        public List<Match> GetMatchesByDate(string date)
+        public List<Match> GetMatchesBySportAndDate(string sport, string date)
         {
             var parsedDate = date.Split('-');
             var day = int.Parse(parsedDate[2]);
@@ -33,9 +33,9 @@ namespace BettingApp.Domain.Repositories.Implementations
             var year = int.Parse(parsedDate[0]);
 
             var matchesToGet = _context.Matches.Where(m =>
-                m.StartsAt.Day == day && m.StartsAt.Month == month && m.StartsAt.Year == year)
+                m.StartsAt.Day == day && m.StartsAt.Month == month && m.StartsAt.Year == year 
+                && string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase))
                 .Include(m => m.Pairs).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
-                .Include(m => m.Sport).ThenInclude(s => s.SportBetTypes).ThenInclude(sbt => sbt.BetType)
                 .ToList();
 
             return matchesToGet;

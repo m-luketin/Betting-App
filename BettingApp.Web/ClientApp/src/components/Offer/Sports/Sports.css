@@ -3,31 +3,36 @@
 	flex-direction: column;
 	justify-content: space-around;
 	font-size: 25px;
-    align-items: center;
-    border: 1px solid black;
-    width: 478px;
+	align-items: center;
+	border: 1px solid black;
+	width: 478px;
 }
 
 .sports__title {
-    font-size: 30px;
-    font-weight: 600;
-    border-bottom: 1px solid black;
-    width: 478px;
-    text-align: center;
-    background-color: white;
-    color: black;
+	font-size: 30px;
+	font-weight: 600;
+	border-bottom: 1px solid black;
+	width: 478px;
+	text-align: center;
+	background-color: white;
+	color: black;
 }
 
 .sports__links {
-    display: flex;
-    flex-direction: column;
-    width: 478px;
+	display: flex;
+	flex-direction: column;
+	width: 478px;
 }
 
 .links__link {
-    border: 1px solid white;
-    text-align: center;
-    padding: 10px;
-    color: white;
-    background-color: black;
+	border: 1px solid white;
+	text-align: center;
+	padding: 10px;
+	color: white;
+	background-color: black;
+}
+
+.links__link--selected, .links__link:hover {
+	color: black;
+	background-color: red;
 }

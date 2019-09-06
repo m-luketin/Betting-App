@@ -7,7 +7,7 @@ namespace BettingApp.Domain.Repositories.Interfaces
 {
     public interface IMatchRepository
     {
-        List<Match> GetMatchesByDate(string date);
+        List<Match> GetMatchesBySportAndDate(string sport, string date);
         List<Match> GetFutureMatches();
     }
 }

@@ -34,11 +34,14 @@
 .bet__input {
     width: 130px;
     text-align: center;
+    border: none;
+    border-bottom: 1px solid grey;
 }
 
 .total__number {
     text-align: center;
     width: 130px;
+    border-bottom: 1px solid grey;
 }
 
 .new-ticket__button {
@@ -49,4 +52,10 @@
     font-weight: 600;
     font-size: 25px;
     text-align: center;
+    border: 1px solid black;
+}
+
+.new-ticket__button:hover {
+    background-color: red;
+    color: black;
 }

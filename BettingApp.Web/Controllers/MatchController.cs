@@ -23,10 +23,10 @@ namespace BettingApp.Web.Controllers
         {
             return Ok(_matchRepository.GetFutureMatches());
         }
-        [HttpGet("date/{date}")]
-        public IActionResult GetMatchesByDate(string date)
+        [HttpGet("{sport}/{date}")]
+        public IActionResult GetMatchesBySportAndDate(string sport, string date)
         {
-            return Ok(_matchRepository.GetMatchesByDate(date));
+            return Ok(_matchRepository.GetMatchesBySportAndDate(sport,date));
         }
     }
 }

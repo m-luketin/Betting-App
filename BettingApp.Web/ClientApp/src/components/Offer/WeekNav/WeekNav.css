@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-around;
     width: 478px;
-    height: 250px;
+    height: 300px;
 }
 
 .week-nav__row {
@@ -13,7 +13,7 @@
 
 .weekday-button {
     width: 159px;
-    height: 83px;
+    height: 100px;
     text-align: center;
     font-size: 22px;
     font-weight: 700;
@@ -23,6 +23,11 @@
     z-index: 2;
 }
 
+.weekday-button:hover, .weekday-button--selected {
+    color: black;
+    background-color: red;
+}
+
 .weekday-button--wide {
-    width: 318px;
+    width: 320px;
 }

@@ -27,3 +27,7 @@
     background-color: black;
     color: white;
 }
+.quotas__quota:hover {
+    background-color: red;
+    color: black;
+}
