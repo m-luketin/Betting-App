@@ -57,8 +57,10 @@ class Offer extends Component {
 	}
 
 	handleCurrentSport = newSport => {
-		this.setState({ currentSport: newSport });
-		this.getNewPairs();
+		this.setState(
+			{ currentSport: newSport },
+			this.getNewPairs(newSport, this.getCurrentDate(this.state.currentDay))
+		);
 	};
 
 	handleCurrentDay = newDay => {

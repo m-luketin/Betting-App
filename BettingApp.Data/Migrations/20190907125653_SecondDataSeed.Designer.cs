@@ -4,14 +4,16 @@ using BettingApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BettingApp.Data.Migrations
 {
     [DbContext(typeof(BettingAppContext))]
-    partial class BettingAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190907125653_SecondDataSeed")]
+    partial class SecondDataSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2090,14 +2092,14 @@ namespace BettingApp.Data.Migrations
                         },
                         new
                         {
-                            TeamId = 11,
+                            TeamId = 3,
                             MatchId = 8,
                             IsHome = true,
                             Score = 3
                         },
                         new
                         {
-                            TeamId = 12,
+                            TeamId = 1,
                             MatchId = 8,
                             IsHome = false,
                             Score = 1
