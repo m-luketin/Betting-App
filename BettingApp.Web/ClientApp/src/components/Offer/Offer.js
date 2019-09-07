@@ -15,7 +15,8 @@ class Offer extends Component {
 			currentSport: 'Football',
 			currentDay: 0,
 			currentDate: this.getCurrentDate(0),
-			pairs: []
+			pairs: [],
+			selectedPairs: []
 		};
 	}
 
@@ -70,6 +71,40 @@ class Offer extends Component {
 		);
 	};
 
+	handlePairs = (homeTeam, awayTeam, betType, matchId, quota) => {
+		let objectToAdd = {
+			homeTeam: homeTeam,
+			awayTeam: awayTeam,
+			betType: betType,
+			matchId: matchId,
+			quota: quota
+		};
+
+		let index = -1;
+		for (var i = 0; i < this.state.selectedPairs.length; i++) {
+			if (this.state.selectedPairs[i].matchId === matchId) {
+				index = i;
+				break;
+			}
+		}
+
+		if (index > -1) {
+			let newState = this.state.selectedPairs;
+			newState.splice(index, 1, objectToAdd);
+			this.setState(
+				{
+					selectedPairs: newState
+				}
+			);
+		} else {
+			this.setState(
+				{
+					selectedPairs: [...this.state.selectedPairs, objectToAdd]
+				}
+			);
+		}
+	};
+
 	componentDidMount() {
 		this.getNewPairs(this.state.currentSport, this.state.currentDate);
 	}
@@ -90,9 +125,17 @@ class Offer extends Component {
 							sportHandler={newSport => this.handleCurrentSport(newSport)}
 						/>
 					</div>
-					<PairList pairs={this.state.pairs} />
+					<PairList
+						pairs={this.state.pairs}
+						pairHandler={(homeTeam, awayTeam, betType, matchId, quota) =>
+							this.handlePairs(homeTeam, awayTeam, betType, matchId, quota)
+						}
+					/>
 					<div className='right-column'>
-						<NewTicket />
+						<NewTicket
+							selectedPairs={this.state.selectedPairs}
+							totalQuota={this.state.totalQuota}
+						/>
 					</div>
 				</main>
 			</div>

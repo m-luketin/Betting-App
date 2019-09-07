@@ -59,3 +59,18 @@
     background-color: red;
     color: black;
 }
+
+.new-ticket__pairs {
+    padding: 10px;
+}
+
+.pairs__pair {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.pair__teams {
+
+}

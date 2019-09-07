@@ -5,10 +5,9 @@ class PairList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-		};
+		this.state = {};
 	}
-	
+
 	render() {
 		return (
 			<div className='pair-list'>
@@ -21,7 +20,14 @@ class PairList extends Component {
 							</div>
 							<div className='pair__quotas'>
 								{item.pairs.map(value => {
-									return <button className='quotas__quota'>{value.quota}</button>;
+									return (
+										<button
+											betType={value.betTypeId}
+											className='quotas__quota'
+											onClick={() => this.props.pairHandler(item.teamMatches[0].team.name, item.teamMatches[1].team.name, value.betTypeId, value.matchId, value.quota)}>
+											{value.quota}
+										</button>
+									);
 								})}
 							</div>
 						</div>
