@@ -5,9 +5,8 @@ using System.Text;
 
 namespace BettingApp.Domain.Repositories.Interfaces
 {
-    public interface IPairRepository
+    public interface ITicketRepository
     {
-        List<Pair> GetPairsByDate(string date);
-        List<Pair> GetFuturePairs();
+        bool AddTicket(double moneyBet, double totalQuota, List<int> pairIds);
     }
 }

@@ -30,8 +30,8 @@ namespace BettingApp
             services.AddDbContext<BettingAppContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BettingAppContext")));
 
-            services.AddScoped<IPairRepository, PairRepository>();
             services.AddScoped<IMatchRepository, MatchRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
                 {

@@ -71,13 +71,14 @@ class Offer extends Component {
 		);
 	};
 
-	handlePairs = (homeTeam, awayTeam, betType, matchId, quota) => {
+	handlePairs = (homeTeam, awayTeam, betType, matchId, quota, id) => {
 		let objectToAdd = {
 			homeTeam: homeTeam,
 			awayTeam: awayTeam,
 			betType: betType,
 			matchId: matchId,
-			quota: quota
+			quota: quota,
+			id: id
 		};
 
 		let index = -1;
@@ -127,8 +128,8 @@ class Offer extends Component {
 					</div>
 					<PairList
 						pairs={this.state.pairs}
-						pairHandler={(homeTeam, awayTeam, betType, matchId, quota) =>
-							this.handlePairs(homeTeam, awayTeam, betType, matchId, quota)
+						pairHandler={(homeTeam, awayTeam, betType, matchId, quota, id) =>
+							this.handlePairs(homeTeam, awayTeam, betType, matchId, quota, id)
 						}
 					/>
 					<div className='right-column'>

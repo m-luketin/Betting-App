@@ -61,16 +61,21 @@
 }
 
 .new-ticket__pairs {
-    padding: 10px;
+    overflow-y: scroll;
 }
 
 .pairs__pair {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     font-weight: 600;
     font-size: 18px;
+    margin: 10px;
 }
 
 .pair__teams {
+    width: 360px;
+}
 
+.pair__bettype {
+    margin-right: 50px;
 }

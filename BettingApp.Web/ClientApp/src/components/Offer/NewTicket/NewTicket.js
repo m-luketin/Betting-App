@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import './NewTicket.css';
 
 class NewTicket extends Component {
@@ -44,6 +45,21 @@ class NewTicket extends Component {
 		return Math.round(this.state.bet * this.calculateTotalQuota() * 95) / 100;
 	}
 
+	confirmTicket() {
+		let pairIds = [];
+		this.props.selectedPairs.map( pair => {
+			pairIds.push(pair.id);
+		})
+		console.log(this.calculateTotalQuota());
+		Axios.post('api/ticket/add', {
+			moneyBet: this.state.bet,
+			totalQuota: this.calculateTotalQuota(),
+			pairIds: pairIds
+		}).then(response => {
+			console.log(response);
+		});
+	}
+
 	render() {
 		return (
 			<div className='new-ticket'>
@@ -55,8 +71,10 @@ class NewTicket extends Component {
 								<span className='pair__teams'>
 									{value.homeTeam} - {value.awayTeam}
 								</span>
-								<span>{this.convertBetType(value.betType)}</span>
-								<span>{value.quota}</span>
+								<span className='pair__bettype'>
+									{this.convertBetType(value.betType)}
+								</span>
+								<span className='pair__quota'>{value.quota}</span>
 							</div>
 						);
 					})}
@@ -79,7 +97,9 @@ class NewTicket extends Component {
 						<span>Winnings:</span>
 						<span className='total__number'>{this.calculateTotal()}</span>
 					</div>
-					<span className='new-ticket__button'>Confirm</span>
+					<span className='new-ticket__button' onClick={() => this.confirmTicket()}>
+						Confirm
+					</span>
 				</div>
 			</div>
 		);
