@@ -26,6 +26,7 @@ namespace BettingApp.Domain.Repositories.Implementations
                 MoneyBet = moneyBet,
                 TotalQuota = totalQuota
             };
+
             var wasSucessful = _context.Tickets.Add(ticketToAdd);
 
             if(wasSucessful == null)
@@ -35,6 +36,16 @@ namespace BettingApp.Domain.Repositories.Implementations
             {
                 _context.TicketPairs.Add(new TicketPair { TicketId = ticketToAdd.Id, PairId = pairId });
             }
+
+            var transactionToAdd = new Transaction
+            {
+                UserId = 1,
+                BalanceChange = moneyBet * (-1),
+                Time = DateTime.Now,
+                TransactionType = TransactionType.TicketBet
+            };
+
+            _context.Transactions.Add(transactionToAdd);
 
             _context.SaveChanges();
             return true;
