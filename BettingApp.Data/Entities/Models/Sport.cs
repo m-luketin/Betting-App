@@ -8,7 +8,6 @@ namespace BettingApp.Data.Entities.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<SportBetType> SportBetTypes { get; set; }
         public ICollection<Match> Matches { get; set; }
     }
 }

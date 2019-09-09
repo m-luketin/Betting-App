@@ -1,0 +1,53 @@
+.account__transactions {
+    background-color: white;
+    height: 500px;
+    border: 1px solid black;
+    width: 455px;
+    margin-top: 150px;
+}
+
+.transactions__titles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titles__title {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    height: 50px;
+    width: 116px;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 8px;
+}
+
+.titles__title--centerleft {
+    border-right: none;
+    border-left: none;
+}
+
+.titles__title--centerright {
+    border-right: none;
+}
+
+.transactions {
+    overflow-y: scroll;
+}
+
+.transaction {
+    width: 430px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 10px 15px;
+    border-bottom: 1px dashed black;
+}
+
+.transaction__time {
+    width: 60px;
+}
+
+.transaction__balance {
+    width: 40px;
+}

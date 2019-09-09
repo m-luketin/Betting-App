@@ -25,6 +25,8 @@ class NewTicket extends Component {
 				return 'X';
 			case 6:
 				return '12';
+			default:
+				break;
 		}
 	}
 
@@ -47,9 +49,9 @@ class NewTicket extends Component {
 
 	confirmTicket() {
 		let pairIds = [];
-		this.props.selectedPairs.map( pair => {
+		this.props.selectedPairs.map(pair => {
 			pairIds.push(pair.id);
-		})
+		});
 		console.log(this.calculateTotalQuota());
 		Axios.post('api/ticket/add', {
 			moneyBet: this.state.bet,

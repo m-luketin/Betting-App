@@ -10,6 +10,5 @@ namespace BettingApp.Data.Entities.Models
         public string Type { get; set; }
         public string Description { get; set; }
         public ICollection<Pair> Pairs { get; set; }
-        public ICollection<SportBetType> SportBetTypes { get; set; }
     }
 }

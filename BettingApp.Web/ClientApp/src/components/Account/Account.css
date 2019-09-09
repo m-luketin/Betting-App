@@ -1,0 +1,13 @@
+.account {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.account__column {
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+    width: 455px;
+    justify-items: center;
+    background-color: darkgreen;
+}
