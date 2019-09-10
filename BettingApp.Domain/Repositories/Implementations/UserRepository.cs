@@ -14,14 +14,14 @@ namespace BettingApp.Domain.Repositories.Implementations
         }
         private readonly BettingAppContext _context;
 
-        public double EditUserBalance(double newBalance)
+        public double AddUserBalance(double balanceToAdd)
         {
             var user = _context.Users.Find(1);
 
-            user.CurrentFunds = newBalance;
+            user.CurrentFunds += balanceToAdd;
             _context.SaveChanges();
 
-            return newBalance;
+            return user.CurrentFunds;
         }
 
         public double GetUserBalance()

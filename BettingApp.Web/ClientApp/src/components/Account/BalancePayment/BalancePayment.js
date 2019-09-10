@@ -6,13 +6,23 @@ class BalancePayment extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentFunds: 0
+			currentFunds: 0,
+			balanceToAdd: 0
 		};
 	}
 
 	componentDidMount() {
 		Axios.post('api/user/balance').then(response => {
 			this.setState({ currentFunds: response.data });
+			console.log(response.data);
+		});
+	}
+
+	editUserBalance() {
+		let balanceToAdd = parseInt(document.getElementById("payment__input").value, 10);
+		console.log(balanceToAdd);
+		Axios.post('api/user/edit-balance',{balanceToAdd: balanceToAdd}).then(response => {
+			this.setState({currentFunds: response.data})
 			console.log(response.data);
 		});
 	}
@@ -33,12 +43,12 @@ class BalancePayment extends Component {
 						step='0.01'
 						placeholder='0.00'
 						className='payment__input'
-						id='bet__input'
-						onChange={() => {return(<div></div>)}}
+						id='payment__input'
+
 					/>
 				</div>
 				<div className="balance-payment__button">
-					<button>Confirm</button>
+					<button onClick={() => {this.editUserBalance()}}>Confirm</button>
 				</div>
 			</div>
 		);

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BettingApp.Domain.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace BettingApp.Web.Controllers
 {
@@ -25,9 +26,10 @@ namespace BettingApp.Web.Controllers
         }
 
         [HttpPost("edit-balance")]
-        public IActionResult EditUserBalance(double newBalance)
+        public IActionResult EditUserBalance([FromBody]JObject data)
         {
-            return Ok(_userRepository.EditUserBalance(newBalance));
+            var balanceToAdd = Convert.ToDouble(data["balanceToAdd"]);
+            return Ok(_userRepository.AddUserBalance(balanceToAdd));
         }
     }
 }
