@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import Transactions from './Transactions/Transactions';
+import Tickets from './Tickets/Tickets';
+import BalancePayment from './BalancePayment/BalancePayment';
 import './Account.css';
 
 class Account extends Component {
@@ -25,11 +27,15 @@ class Account extends Component {
 			<div className='account'>
 				<Navbar />
 				<main>
-					<div className='account__column'>
-						<div className='account__user'></div>
+					<div className='account__column--left'>
 						<Transactions transactions={this.state.transactions} />
 					</div>
-					<div className='account__tickets'></div>
+					<div className='account__tickets'>
+						<Tickets />
+					</div>
+					<div className='account__column--right'>
+						<BalancePayment />
+					</div>
 				</main>
 			</div>
 		);

@@ -2,17 +2,17 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	font-size: 25px;
+	font-size: 22px;
 	align-items: center;
 	border: 1px solid black;
-	width: 478px;
+	width: 100%;
 }
 
 .sports__title {
-	font-size: 30px;
+	font-size: 25px;
 	font-weight: 600;
 	border-bottom: 1px solid black;
-	width: 478px;
+	width: 100%;
 	text-align: center;
 	background-color: white;
 	color: black;
@@ -21,15 +21,16 @@
 .sports__links {
 	display: flex;
 	flex-direction: column;
-	width: 478px;
+	width: 100%;
 }
 
 .links__link {
 	border: 1px solid white;
 	text-align: center;
-	padding: 10px;
+	padding: 3px;
 	color: white;
 	background-color: black;
+	height: 40px;
 }
 
 .links__link--selected, .links__link:hover {

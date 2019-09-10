@@ -112,7 +112,7 @@ class Offer extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="offer">
 				<Navbar />
 				<main>
 					<div className='left-column'>

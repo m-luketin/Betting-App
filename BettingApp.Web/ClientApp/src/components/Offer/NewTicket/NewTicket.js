@@ -70,8 +70,9 @@ class NewTicket extends Component {
 					{this.props.selectedPairs.map((value, key) => {
 						return (
 							<div className='pairs__pair'>
-								<span className='pair__teams'>
-									{value.homeTeam} - {value.awayTeam}
+								<span className='ticket-pair__teams'>
+									<span>{value.homeTeam}</span>
+									<span>{value.awayTeam}</span>
 								</span>
 								<span className='pair__bettype'>
 									{this.convertBetType(value.betType)}

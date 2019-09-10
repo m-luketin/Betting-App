@@ -2,8 +2,8 @@
     background-color: white;
     height: 500px;
     border: 1px solid black;
-    width: 455px;
-    margin-top: 150px;
+    width: 100%;
+    margin-top: 75px;
 }
 
 .transactions__titles {

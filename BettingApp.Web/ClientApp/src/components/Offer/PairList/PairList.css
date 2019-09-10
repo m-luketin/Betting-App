@@ -1,32 +1,47 @@
 .pair-list {
 	display: flex;
-	flex-direction: column;
-	width: 1440px;
+    flex-direction: column;
+    width: 614px;
 }
 
 .pair-list__pair {
 	display: flex;
-	justify-content: space-between;
     align-items: center;
-    font-size: 27px;
-    padding: 12px;
+    justify-content: start;
+    font-size: 20px;
+    padding: 8px;
     border: 1px solid black;
+    width: 100%;
+}
+
+.pair__teams {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    align-items: center;
+}
+
+.pair__teams span{
+    width: 200px;
+    text-align: center;
 }
 
 .pair__quotas {
 	display: flex;
     justify-content: space-between;
-    width: 600px;
+    width: 300px;
 }
 
 .quotas__quota {
 	border: 1px solid black;
-	padding: 1px 2px;
-	width: 70px;
+    padding: 1px 2px;
+    font-size: 16px;
+	width: 40px;
     text-align: center;
     background-color: black;
     color: white;
 }
+
 .quotas__quota:hover {
     background-color: red;
     color: black;

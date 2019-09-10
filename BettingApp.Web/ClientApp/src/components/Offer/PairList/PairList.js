@@ -15,8 +15,9 @@ class PairList extends Component {
 					return (
 						<div className='pair-list__pair'>
 							<div>{item.startsAt.substring(11, 16)}</div>
-							<div>
-								{item.teamMatches[0].team.name} - {item.teamMatches[1].team.name}
+							<div className='pair__teams'>
+								<span>{item.teamMatches[0].team.name}</span>
+								<span>{item.teamMatches[1].team.name}</span>
 							</div>
 							<div className='pair__quotas'>
 								{item.pairs.map(value => {
@@ -24,7 +25,16 @@ class PairList extends Component {
 										<button
 											betType={value.betTypeId}
 											className='quotas__quota'
-											onClick={() => this.props.pairHandler(item.teamMatches[0].team.name, item.teamMatches[1].team.name, value.betTypeId, value.matchId, value.quota, value.id)}>
+											onClick={() =>
+												this.props.pairHandler(
+													item.teamMatches[0].team.name,
+													item.teamMatches[1].team.name,
+													value.betTypeId,
+													value.matchId,
+													value.quota,
+													value.id
+												)
+											}>
 											{value.quota}
 										</button>
 									);
