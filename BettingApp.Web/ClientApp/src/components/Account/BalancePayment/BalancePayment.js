@@ -44,7 +44,6 @@ class BalancePayment extends Component {
 						placeholder='0.00'
 						className='payment__input'
 						id='payment__input'
-
 					/>
 				</div>
 				<div className="balance-payment__button">

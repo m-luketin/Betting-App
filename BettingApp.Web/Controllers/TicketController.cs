@@ -35,5 +35,16 @@ namespace BettingApp.Web.Controllers
 
             return Forbid();
         }
+
+        [HttpGet("get/{id}")]
+        public IActionResult GetUserTickets(int id)
+        {
+            var ticketsToGet = _ticketRepository.GetUserTickets(id);
+
+            if(ticketsToGet == null)
+                return Forbid();
+
+            return Ok(ticketsToGet);
+        }
     }
 }

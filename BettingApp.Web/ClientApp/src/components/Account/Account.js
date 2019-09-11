@@ -10,16 +10,19 @@ class Account extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			transactions: []
+			transactions: [],
+			tickets: []
 		};
 	}
 
 	componentDidMount() {
-		Axios.post('api/transaction/get/1')
-			.then(response => {
-				this.setState({ transactions: response.data });
-				console.log(response.data);
-			})
+		Axios.post('api/transaction/get/1').then(response => {
+			this.setState({ transactions: response.data });
+			console.log(response.data);
+		});
+		Axios.get('api/ticket/get/1').then(response => {
+			this.setState({ tickets: response.data });
+		});
 	}
 
 	render() {
@@ -31,7 +34,7 @@ class Account extends Component {
 						<Transactions transactions={this.state.transactions} />
 					</div>
 					<div className='account__tickets'>
-						<Tickets />
+						<Tickets tickets={this.state.tickets} />
 					</div>
 					<div className='account__column--right'>
 						<BalancePayment />

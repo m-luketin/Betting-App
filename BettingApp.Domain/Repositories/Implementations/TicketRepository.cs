@@ -2,8 +2,10 @@
 using BettingApp.Data.Entities.Models;
 using BettingApp.Data.Enums;
 using BettingApp.Domain.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BettingApp.Domain.Repositories.Implementations
@@ -49,6 +51,19 @@ namespace BettingApp.Domain.Repositories.Implementations
 
             _context.SaveChanges();
             return true;
+        }
+
+        public List<Ticket> GetUserTickets(int userId)
+        {
+            return _context.Tickets.Where(t => t.UserId == userId).Include(t => t.TicketPairs)
+                .ThenInclude(tp => tp.Pair)
+                .ThenInclude(p => p.BetType)
+                .Include(t => t.TicketPairs)
+                .ThenInclude(tp => tp.Pair)
+                .ThenInclude(p => p.Match)
+                .ThenInclude(m => m.TeamMatches)
+                .ThenInclude(tm => tm.Team).OrderByDescending(t => t.IssuedAt)
+                .ToList();
         }
     }
 }

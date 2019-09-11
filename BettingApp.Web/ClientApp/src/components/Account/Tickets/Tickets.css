@@ -1,0 +1,56 @@
+.tickets {
+    width: 614px;
+    height: 671px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tickets__ticket-view {
+    width: 300px;
+    background-color: white;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.ticket-view__time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-view__pairs-view {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+}
+
+.pairs-view__pair-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed black;
+    border-top: 1px dashed black;
+    margin: -0.5px;
+    padding: 10px 0px;
+}
+
+.pair-view__teams {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+}
+
+.ticket__detail {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ticket__detail span{
+    text-align: center;
+    width: 100px;
+}
