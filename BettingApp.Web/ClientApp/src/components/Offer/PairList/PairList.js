@@ -8,9 +8,22 @@ class PairList extends Component {
 		this.state = {};
 	}
 
+	getHeaderBetTypes() {
+		if (this.props.pairs[0] !== undefined) {
+			return this.props.pairs[0].pairs.map(pair => {
+				return <span>{pair.betType.type}</span>;
+			});
+		}
+	}
+
 	render() {
 		return (
 			<div className='pair-list'>
+				<div className='pair-list__header'>
+					<span>Time</span>
+					<span>Match</span>
+					<div className='bet-types'>{this.getHeaderBetTypes()}</div>
+				</div>
 				{this.props.pairs.map(item => {
 					return (
 						<div className='pair-list__pair'>

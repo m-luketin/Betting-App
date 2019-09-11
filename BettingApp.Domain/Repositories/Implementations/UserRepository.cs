@@ -1,4 +1,6 @@
 ﻿using BettingApp.Data.Entities;
+using BettingApp.Data.Entities.Models;
+using BettingApp.Data.Enums;
 using BettingApp.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,17 @@ namespace BettingApp.Domain.Repositories.Implementations
             var user = _context.Users.Find(1);
 
             user.CurrentFunds += balanceToAdd;
+
+            var transactionToAdd = new Transaction
+            {
+                UserId = 1,
+                BalanceChange = balanceToAdd,
+                Time = DateTime.Now,
+                TransactionType = TransactionType.BalancePayment
+            };
+
+            _context.Transactions.Add(transactionToAdd);
+
             _context.SaveChanges();
 
             return user.CurrentFunds;

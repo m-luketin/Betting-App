@@ -28,5 +28,10 @@ namespace BettingApp.Web.Controllers
         {
             return Ok(_matchRepository.GetMatchesBySportAndDate(sport,date));
         }
+        [HttpGet("top-offer/{sport}")]
+        public IActionResult GetTopOffer(string sport)
+        {
+            return Ok(_matchRepository.GetTopOfferBySport(sport));
+        }
     }
 }

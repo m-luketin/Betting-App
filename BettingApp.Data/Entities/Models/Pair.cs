@@ -14,7 +14,6 @@ namespace BettingApp.Data.Entities.Models
         public BetType BetType { get; set; }
         public PairStatus Status { get; set; }
         public double Quota { get; set; }
-        public bool IsTopOffer { get; set; }
         public ICollection<TicketPair> TicketPairs { get; set; }
     }
 }

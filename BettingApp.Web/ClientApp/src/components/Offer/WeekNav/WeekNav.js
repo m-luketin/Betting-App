@@ -76,8 +76,8 @@ class WeekNav extends Component {
 					</button>
 					<button
 						className='weekday-button weekday-button--wide'
-						onClick={() => this.props.dayHandler(7)}>
-						THIS WEEK
+						onClick={() => this.props.topOfferHandler()}>
+						TOP OFFER
 					</button>
 				</div>
 			</div>

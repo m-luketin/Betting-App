@@ -9,5 +9,6 @@ namespace BettingApp.Domain.Repositories.Interfaces
     {
         List<Match> GetMatchesBySportAndDate(string sport, string date);
         List<Match> GetFutureMatches();
-    }
+        List<Match> GetTopOfferBySport(string sport);
+}
 }

@@ -33,9 +33,19 @@ namespace BettingApp.Domain.Repositories.Implementations
             var year = int.Parse(parsedDate[0]);
 
             var matchesToGet = _context.Matches.Where(m =>
-                m.StartsAt.Day == day && m.StartsAt.Month == month && m.StartsAt.Year == year 
+                m.StartsAt.Day == day && m.StartsAt.Month == month && m.StartsAt.Year == year && !m.IsTopOffer
                 && string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase))
-                .Include(m => m.Pairs).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
+                .Include(m => m.Pairs).ThenInclude(p => p.BetType).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
+                .ToList();
+
+            return matchesToGet;
+        }
+
+        public List<Match> GetTopOfferBySport(string sport)
+        {
+            var matchesToGet = _context.Matches.Where(m =>
+            string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase) && m.EndedAt == null && m.IsTopOffer)
+                .Include(m => m.Pairs).ThenInclude(p => p.BetType).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
                 .ToList();
 
             return matchesToGet;

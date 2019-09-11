@@ -13,5 +13,7 @@ namespace BettingApp.Data.Entities.Models
         public Sport Sport{ get; set; }
         public ICollection<Pair> Pairs { get; set; }
         public ICollection<TeamMatch> TeamMatches { get; set; }
+        public bool IsTopOffer { get; set; }
     }
 }
+

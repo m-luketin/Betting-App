@@ -39,6 +39,9 @@ namespace BettingApp.Domain.Repositories.Implementations
                 _context.TicketPairs.Add(new TicketPair { TicketId = ticketToAdd.Id, PairId = pairId });
             }
 
+            var user = _context.Users.Find(1);
+            user.CurrentFunds -= moneyBet;
+
             var transactionToAdd = new Transaction
             {
                 UserId = 1,

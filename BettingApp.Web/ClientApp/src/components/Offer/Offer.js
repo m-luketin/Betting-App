@@ -50,11 +50,7 @@ class Offer extends Component {
 		Axios.get(`api/match/${sport}/${date}`)
 			.then(response => {
 				this.setState({ pairs: [...response.data] });
-				console.log(this.state);
 			})
-			.catch(err => {
-				console.log(err);
-			});
 	}
 
 	handleCurrentSport = newSport => {
@@ -106,6 +102,13 @@ class Offer extends Component {
 		}
 	};
 
+	handleTopOffers() {
+		Axios.get(`api/match/top-offer/${this.state.currentSport}`)
+			.then(response => {
+				this.setState({ pairs: [...response.data], currentDay: 7 });
+			})
+	}
+
 	componentDidMount() {
 		this.getNewPairs(this.state.currentSport, this.state.currentDate);
 	}
@@ -120,6 +123,7 @@ class Offer extends Component {
 							currentDate={this.state.currentDate}
 							currentDay={this.state.currentDay}
 							dayHandler={newDay => this.handleCurrentDay(newDay)}
+							topOfferHandler={() => this.handleTopOffers()}
 						/>
 						<Sports
 							currentSport={this.state.currentSport}
