@@ -19,10 +19,10 @@ namespace BettingApp.Web.Controllers
         }
         private readonly IUserRepository _userRepository;
 
-        [HttpGet("balance")]
-        public IActionResult GetUserBalance()
+        [HttpGet("balance/{id}")]
+        public IActionResult GetUserBalance(int id)
         {
-            return Ok(_userRepository.GetUserBalance());
+            return Ok(_userRepository.GetUserBalance(id));
         }
 
         [HttpPost("edit-balance")]

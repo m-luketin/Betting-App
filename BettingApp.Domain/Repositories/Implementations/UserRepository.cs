@@ -37,9 +37,9 @@ namespace BettingApp.Domain.Repositories.Implementations
             return user.CurrentFunds;
         }
 
-        public double GetUserBalance()
+        public double GetUserBalance(int userId)
         {
-            return _context.Users.Find(1).CurrentFunds;
+            return _context.Users.Find(userId).CurrentFunds;
         }
     }
 }

@@ -15,11 +15,15 @@ class Account extends Component {
 		};
 	}
 
-	componentDidMount() {
+	renderTransactions() {
 		Axios.post('api/transaction/get/1').then(response => {
 			this.setState({ transactions: response.data });
-			console.log(response.data);
 		});
+	}
+
+	componentDidMount() {
+		this.renderTransactions();
+
 		Axios.get('api/ticket/get/1').then(response => {
 			this.setState({ tickets: response.data });
 		});
@@ -37,7 +41,7 @@ class Account extends Component {
 						<Tickets tickets={this.state.tickets} />
 					</div>
 					<div className='account__column--right'>
-						<BalancePayment />
+						<BalancePayment transactionHandler={() => this.renderTransactions()} />
 					</div>
 				</main>
 			</div>

@@ -9,12 +9,10 @@ class Tickets extends Component {
 	}
 
 	normalizeCurrency(currency) {
-		console.log(currency);
 		return Math.round(currency * 100) / 100;
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className='tickets'>
 				{this.props.tickets.map(ticket => {

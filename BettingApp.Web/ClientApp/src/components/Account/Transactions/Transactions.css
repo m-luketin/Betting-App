@@ -34,6 +34,7 @@
 
 .transactions {
     overflow-y: scroll;
+    height: 445px;
 }
 
 .transaction {

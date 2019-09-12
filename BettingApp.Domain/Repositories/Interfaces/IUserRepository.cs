@@ -6,7 +6,7 @@ namespace BettingApp.Domain.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-        double GetUserBalance();
+        double GetUserBalance(int userId);
         double AddUserBalance(double balanceToAdd);
     }
 }
