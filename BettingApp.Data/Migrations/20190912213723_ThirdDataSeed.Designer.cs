@@ -4,14 +4,16 @@ using BettingApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BettingApp.Data.Migrations
 {
     [DbContext(typeof(BettingAppContext))]
-    partial class BettingAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190912213723_ThirdDataSeed")]
+    partial class ThirdDataSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1521,7 +1523,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 152,
                             BetTypeId = 1,
-                            MatchId = 29,
+                            MatchId = 8,
                             Quota = 4.5,
                             Status = "IsCorrect"
                         },
@@ -1529,7 +1531,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 153,
                             BetTypeId = 2,
-                            MatchId = 29,
+                            MatchId = 8,
                             Quota = 2.21,
                             Status = "IsFalse"
                         },
@@ -1537,7 +1539,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 154,
                             BetTypeId = 3,
-                            MatchId = 29,
+                            MatchId = 8,
                             Quota = 2.8799999999999999,
                             Status = "IsCorrect"
                         },
@@ -1545,7 +1547,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 155,
                             BetTypeId = 4,
-                            MatchId = 29,
+                            MatchId = 8,
                             Quota = 3.02,
                             Status = "IsFalse"
                         },
@@ -1553,7 +1555,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 156,
                             BetTypeId = 5,
-                            MatchId = 29,
+                            MatchId = 8,
                             Quota = 1.75,
                             Status = "IsFalse"
                         },
@@ -1561,7 +1563,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 157,
                             BetTypeId = 1,
-                            MatchId = 30,
+                            MatchId = 9,
                             Quota = 4.5,
                             Status = "IsCorrect"
                         },
@@ -1569,7 +1571,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 158,
                             BetTypeId = 2,
-                            MatchId = 30,
+                            MatchId = 9,
                             Quota = 2.21,
                             Status = "IsFalse"
                         },
@@ -1577,7 +1579,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 159,
                             BetTypeId = 3,
-                            MatchId = 30,
+                            MatchId = 9,
                             Quota = 2.8799999999999999,
                             Status = "IsCorrect"
                         },
@@ -1585,7 +1587,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 160,
                             BetTypeId = 4,
-                            MatchId = 30,
+                            MatchId = 9,
                             Quota = 3.02,
                             Status = "IsFalse"
                         },
@@ -1593,7 +1595,7 @@ namespace BettingApp.Data.Migrations
                         {
                             Id = 161,
                             BetTypeId = 5,
-                            MatchId = 30,
+                            MatchId = 9,
                             Quota = 1.75,
                             Status = "IsFalse"
                         },
@@ -2504,7 +2506,7 @@ namespace BettingApp.Data.Migrations
                         },
                         new
                         {
-                            TeamId = 44,
+                            TeamId = 40,
                             MatchId = 29,
                             IsHome = true,
                             Score = 0

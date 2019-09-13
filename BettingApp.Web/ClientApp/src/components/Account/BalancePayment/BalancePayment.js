@@ -14,7 +14,6 @@ class BalancePayment extends Component {
 	componentDidMount() {
 		Axios.get('api/user/balance/1').then(response => {
 			this.setState({ currentFunds: response.data });
-			console.log(response.data);
 		});
 	}
 

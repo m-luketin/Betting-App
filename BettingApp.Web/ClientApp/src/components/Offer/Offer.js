@@ -47,17 +47,26 @@ class Offer extends Component {
 	}
 
 	getNewPairs(sport, date) {
-		Axios.get(`api/match/${sport}/${date}`)
-			.then(response => {
+		if (date === null) {
+			Axios.get(`api/match/top-offer/${sport}`).then(response => {
+				this.setState({ pairs: [...response.data], currentDay: 7 });
+			});
+		} else {
+			Axios.get(`api/match/${sport}/${date}`).then(response => {
 				this.setState({ pairs: [...response.data] });
-			})
+			});
+		}
 	}
 
 	handleCurrentSport = newSport => {
-		this.setState(
-			{ currentSport: newSport },
-			this.getNewPairs(newSport, this.getCurrentDate(this.state.currentDay))
-		);
+		if (this.state.currentDay === 7) {
+			this.setState({ currentSport: newSport }, this.getNewPairs(newSport, null));
+		} else {
+			this.setState(
+				{ currentSport: newSport },
+				this.getNewPairs(newSport, this.getCurrentDate(this.state.currentDay))
+			);
+		}
 	};
 
 	handleCurrentDay = newDay => {
@@ -88,25 +97,20 @@ class Offer extends Component {
 		if (index > -1) {
 			let newState = this.state.selectedPairs;
 			newState.splice(index, 1, objectToAdd);
-			this.setState(
-				{
-					selectedPairs: newState
-				}
-			);
+			this.setState({
+				selectedPairs: newState
+			});
 		} else {
-			this.setState(
-				{
-					selectedPairs: [...this.state.selectedPairs, objectToAdd]
-				}
-			);
+			this.setState({
+				selectedPairs: [...this.state.selectedPairs, objectToAdd]
+			});
 		}
 	};
 
 	handleTopOffers() {
-		Axios.get(`api/match/top-offer/${this.state.currentSport}`)
-			.then(response => {
-				this.setState({ pairs: [...response.data], currentDay: 7 });
-			})
+		Axios.get(`api/match/top-offer/${this.state.currentSport}`).then(response => {
+			this.setState({ pairs: [...response.data], currentDay: 7 });
+		});
 	}
 
 	componentDidMount() {
@@ -115,7 +119,7 @@ class Offer extends Component {
 
 	render() {
 		return (
-			<div className="offer">
+			<div className='offer'>
 				<Navbar />
 				<main>
 					<div className='left-column'>

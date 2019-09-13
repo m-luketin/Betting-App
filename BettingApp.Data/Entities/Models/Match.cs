@@ -8,7 +8,7 @@ namespace BettingApp.Data.Entities.Models
     {
         public int Id { get; set; }
         public DateTime StartsAt { get; set; }
-        public DateTime EndedAt { get; set; }
+        public DateTime? EndedAt { get; set; }
         public int SportId { get; set; }
         public Sport Sport{ get; set; }
         public ICollection<Pair> Pairs { get; set; }

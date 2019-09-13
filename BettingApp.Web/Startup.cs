@@ -34,6 +34,7 @@ namespace BettingApp
             services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IMockResultsRepository, MockResultsRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
                 {
