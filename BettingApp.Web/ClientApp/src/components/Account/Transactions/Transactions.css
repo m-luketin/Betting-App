@@ -17,19 +17,31 @@
     color: white;
     font-weight: 600;
     height: 50px;
-    width: 116px;
+    width: 130px;
     text-align: center;
     font-size: 20px;
     padding-top: 8px;
 }
 
+.titles__title--left {
+    border-left: none;
+    width: 120px;
+}
+
 .titles__title--centerleft {
     border-right: none;
     border-left: none;
+    width: 100px;
 }
 
 .titles__title--centerright {
     border-right: none;
+    width: 100px;
+}
+
+.titles__title--right {
+    border-right: none;
+    width: 185px;
 }
 
 .transactions {
@@ -46,9 +58,16 @@
 }
 
 .transaction__time {
-    width: 60px;
+    width: 50px;
+    text-align: center;
 }
 
 .transaction__balance {
-    width: 40px;
+    width: 60px;
+    text-align: center;
+}
+
+.transaction__type {
+    width: 120px;
+    text-align: center;
 }

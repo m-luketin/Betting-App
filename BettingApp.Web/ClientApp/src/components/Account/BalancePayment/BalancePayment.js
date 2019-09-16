@@ -7,8 +7,13 @@ class BalancePayment extends Component {
 		super(props);
 		this.state = {
 			currentFunds: 0,
-			balanceToAdd: 0
+			balanceToAdd: 0,
+			warning: ''
 		};
+	}
+
+	setPayment() {
+		this.setState({ balanceToAdd: document.getElementById('payment__input').value });
 	}
 
 	componentDidMount() {
@@ -18,8 +23,20 @@ class BalancePayment extends Component {
 	}
 
 	editUserBalance() {
-		let balanceToAdd = parseFloat(document.getElementById('payment__input').value);
-		Axios.post('api/user/edit-balance', { balanceToAdd: balanceToAdd })
+		if (!this.state.balanceToAdd) {
+			this.setState({ warning: 'Please select money to add' });
+			return;
+		} else if (this.state.balanceToAdd < 0.01) {
+			this.setState({ warning: 'Invalid amount' });
+			return;
+		} else if (this.state.balanceToAdd > 10000) {
+			this.setState({ warning: 'Max payment is 10,000' });
+			return;
+		} else {
+			this.setState({ warning: '' });
+		}
+
+		Axios.post('api/user/edit-balance', { balanceToAdd: this.state.balanceToAdd })
 			.then(response => {
 				this.setState({ currentFunds: response.data });
 			})
@@ -45,8 +62,10 @@ class BalancePayment extends Component {
 						placeholder='0.00'
 						className='payment__input'
 						id='payment__input'
+						onChange={() => this.setPayment()}
 					/>
 				</div>
+				<div className='balance-payment__warning'>{this.state.warning}</div>
 				<div className='balance-payment__button'>
 					<button
 						onClick={() => {

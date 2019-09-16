@@ -7,7 +7,8 @@ class NewTicket extends Component {
 		super(props);
 
 		this.state = {
-			bet: 0
+			bet: 0,
+			warning: ''
 		};
 	}
 
@@ -48,6 +49,25 @@ class NewTicket extends Component {
 	}
 
 	confirmTicket() {
+		if (this.props.selectedPairs.length < 3) {
+			this.setState({ warning: 'Minimum number of pairs is 3' });
+			return;
+		} else if (!this.state.bet) {
+			this.setState({ warning: 'Please select bet money' });
+			return;
+		} else if (this.state.bet > 1000) {
+			this.setState({ warning: 'Max bet amount is 1000' });
+			return;
+		} else if (this.state.bet < 0.01) {
+			this.setState({ warning: 'Invalid amount' });
+			return;
+		} else if (this.state.bet > this.props.balance) {
+			this.setState({ warning: `Insufficient funds(${this.props.balance})` });
+			return;
+		} else {
+			this.setState({ warning: '' });
+		}
+
 		let pairIds = [];
 		this.props.selectedPairs.map(pair => {
 			pairIds.push(pair.id);
@@ -96,6 +116,9 @@ class NewTicket extends Component {
 					<div className='new-ticket__total'>
 						<span>Winnings:</span>
 						<span className='total__number'>{this.calculateTotal()}</span>
+					</div>
+					<div className='new-ticket__warning' id='new-ticket__warning'>
+						{this.state.warning}
 					</div>
 					<span className='new-ticket__button' onClick={() => this.confirmTicket()}>
 						Confirm

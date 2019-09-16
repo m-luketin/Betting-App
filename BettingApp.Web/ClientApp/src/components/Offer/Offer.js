@@ -16,7 +16,8 @@ class Offer extends Component {
 			currentDay: 0,
 			currentDate: this.getCurrentDate(0),
 			pairs: [],
-			selectedPairs: []
+			selectedPairs: [],
+			balance: 0
 		};
 	}
 
@@ -115,6 +116,11 @@ class Offer extends Component {
 
 	componentDidMount() {
 		this.getNewPairs(this.state.currentSport, this.state.currentDate);
+
+		Axios.get('api/user/balance/1').then(response => {
+			this.state.balance = response.data;
+		});
+
 	}
 
 	render() {
@@ -144,6 +150,7 @@ class Offer extends Component {
 						<NewTicket
 							selectedPairs={this.state.selectedPairs}
 							totalQuota={this.state.totalQuota}
+							balance={this.state.balance}
 						/>
 					</div>
 				</main>

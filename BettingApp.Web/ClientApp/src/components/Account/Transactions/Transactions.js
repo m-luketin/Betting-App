@@ -10,10 +10,10 @@ class Transactions extends Component {
 		return (
 			<div className='account__transactions'>
 				<div className='transactions__titles'>
-					<span className='titles__title '>Date</span>
+					<span className='titles__title titles__title--left'>Date</span>
 					<span className='titles__title titles__title--centerleft'>Time</span>
 					<span className='titles__title titles__title--centerright'>Balance</span>
-					<span className='titles__title'>Type</span>
+					<span className='titles__title titles__title--right'>Type</span>
 				</div>
 				<div className='transactions'>
 					{this.props.transactions.map(transaction => {

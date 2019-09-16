@@ -35,7 +35,7 @@ namespace BettingApp.Domain.Repositories.Implementations
 
         public List<Transaction> GetUserTransactions(int userId)
         {
-            return _context.Transactions.Where(t => t.UserId == userId).ToList();
+            return _context.Transactions.Where(t => t.UserId == userId).OrderByDescending(t => t.Time).ToList();
         }
     }
 }

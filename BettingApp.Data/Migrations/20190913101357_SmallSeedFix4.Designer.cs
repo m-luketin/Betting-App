@@ -4,14 +4,16 @@ using BettingApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BettingApp.Data.Migrations
 {
     [DbContext(typeof(BettingAppContext))]
-    partial class BettingAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190913101357_SmallSeedFix4")]
+    partial class SmallSeedFix4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,224 +100,224 @@ namespace BettingApp.Data.Migrations
                             Id = 1,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 6,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 7,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 8,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 9,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 10,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 11,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 12,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 13,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 14,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 15,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 16,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 17,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 18,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 19,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 20,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 21,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 17, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 14, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 22,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 23,
                             IsTopOffer = false,
                             SportId = 5,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 24,
                             IsTopOffer = false,
                             SportId = 5,
-                            StartsAt = new DateTime(2019, 9, 16, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 13, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 25,
                             IsTopOffer = false,
                             SportId = 5,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 26,
                             IsTopOffer = true,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 27,
                             IsTopOffer = true,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 28,
                             IsTopOffer = true,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 29,
                             IsTopOffer = true,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 30,
                             IsTopOffer = true,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 31,
                             IsTopOffer = true,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 32,
                             IsTopOffer = true,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 18, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartsAt = new DateTime(2019, 9, 15, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {

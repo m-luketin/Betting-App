@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 500px;
+    height: 580px;
     font-size: 22px;
     border: 1px solid black;
     background-color: white;
@@ -88,4 +88,11 @@
 
 .pair__bettype {
     margin-right: 50px;
+}
+
+.new-ticket__warning {
+    height: 20px;
+    color:red;
+    font-weight: 600;
+    font-size: 15px;
 }
