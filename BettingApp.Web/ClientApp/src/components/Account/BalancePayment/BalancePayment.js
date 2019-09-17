@@ -16,10 +16,15 @@ class BalancePayment extends Component {
 		this.setState({ balanceToAdd: document.getElementById('payment__input').value });
 	}
 
-	componentDidMount() {
-		Axios.get('api/user/balance/1').then(response => {
-			this.setState({ currentFunds: response.data });
-		});
+	displayConfirm() {
+		document.getElementById('balance-payment__button').classList.remove('display-none');
+		document.getElementById('balance-payment__popup').classList.add('display-none');
+		this.setState({ warning: '' });
+	}
+
+	displayYesNo() {
+		document.getElementById('balance-payment__button').classList.add('display-none');
+		document.getElementById('balance-payment__popup').classList.remove('display-none');
 	}
 
 	editUserBalance() {
@@ -33,9 +38,13 @@ class BalancePayment extends Component {
 			this.setState({ warning: 'Max payment is 10,000' });
 			return;
 		} else {
-			this.setState({ warning: '' });
+			this.setState({ warning: 'Are you sure?' });
 		}
 
+		this.displayYesNo();
+	}
+
+	confirmUserBalance() {
 		Axios.post('api/user/edit-balance', { balanceToAdd: this.state.balanceToAdd })
 			.then(response => {
 				this.setState({ currentFunds: response.data });
@@ -43,6 +52,16 @@ class BalancePayment extends Component {
 			.then(() => {
 				this.props.transactionHandler();
 			});
+
+		document.getElementById('payment__input').value = '';
+		this.setState({ warning: '', balanceToAdd: 0 });
+		this.displayConfirm();
+	}
+
+	componentDidMount() {
+		Axios.get('api/user/balance/1').then(response => {
+			this.setState({ currentFunds: response.data });
+		});
 	}
 
 	render() {
@@ -68,11 +87,26 @@ class BalancePayment extends Component {
 				<div className='balance-payment__warning'>{this.state.warning}</div>
 				<div className='balance-payment__button'>
 					<button
+						id='balance-payment__button'
 						onClick={() => {
 							this.editUserBalance();
 						}}>
 						Confirm
 					</button>
+				</div>
+				<div
+					className='balance-payment__popup display-none'
+					id='balance-payment__popup'>
+					<span
+						className='balance-payment__yes'
+						onClick={() => this.confirmUserBalance()}>
+						Yes
+					</span>
+					<span
+						className='balance-payment__no'
+						onClick={() => this.displayConfirm()}>
+						No
+					</span>
 				</div>
 			</div>
 		);

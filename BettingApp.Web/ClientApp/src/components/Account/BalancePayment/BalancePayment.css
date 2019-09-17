@@ -8,6 +8,7 @@
     justify-content: space-between;
     border: 1px solid black;
     margin-top: 220px;
+    padding-bottom: 20px;
 }
 
 .balance-payment__funds {
@@ -44,6 +45,32 @@
     justify-content: center;
 }
 
+.balance-payment__popup {
+    display: flex;
+    justify-content: space-around;
+    height: 40px;
+}
+
+.balance-payment__yes, .balance-payment__no {
+    height: 40px;
+    text-align: center;
+    width: 30%;
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+    padding-top: 3px;
+    border: 1px solid black;
+    background-color: black;
+}
+
+.balance-payment__no:hover {
+    background-color: red;
+}
+
+.balance-payment__yes:hover {
+    background-color: darkgreen;
+}
+
 .payment__input {
     width: 130px;
     text-align: center;
@@ -52,9 +79,13 @@
 }
 
 .balance-payment__warning {
-    height: 20px;
+    height: 30px;
     color:red;
     font-weight: 600;
     font-size: 15px;
     margin-left: 15px;
+}
+
+.display-none {
+    display: none;
 }

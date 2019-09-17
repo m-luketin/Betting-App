@@ -65,9 +65,13 @@ class NewTicket extends Component {
 			this.setState({ warning: `Insufficient funds(${this.props.balance})` });
 			return;
 		} else {
-			this.setState({ warning: '' });
+			this.setState({ warning: 'Are you sure?' });
 		}
 
+		this.displayYesNo();
+	}
+
+	confirmPopup() {
 		let pairIds = [];
 		this.props.selectedPairs.map(pair => {
 			pairIds.push(pair.id);
@@ -77,6 +81,24 @@ class NewTicket extends Component {
 			totalQuota: this.calculateTotalQuota(),
 			pairIds: pairIds
 		});
+
+		// resetting
+		this.props.pairRemover();
+		this.displayConfirm();
+		this.setState({bet: 0});
+		document.getElementById("bet__input").value = "";
+		this.setState({ warning: '' });
+	}
+
+	displayConfirm() {
+		document.getElementById('new-ticket__button').classList.remove('display-none');
+		document.getElementById('new-ticket__popup').classList.add('display-none');
+		this.setState({ warning: '' });
+	}
+
+	displayYesNo() {
+		document.getElementById('new-ticket__button').classList.add('display-none');
+		document.getElementById('new-ticket__popup').classList.remove('display-none');
 	}
 
 	render() {
@@ -120,9 +142,24 @@ class NewTicket extends Component {
 					<div className='new-ticket__warning' id='new-ticket__warning'>
 						{this.state.warning}
 					</div>
-					<span className='new-ticket__button' onClick={() => this.confirmTicket()}>
+					<span
+						className='new-ticket__button'
+						id='new-ticket__button'
+						onClick={() => this.confirmTicket()}>
 						Confirm
 					</span>
+					<div className='new-ticket__popup  display-none' id='new-ticket__popup'>
+						<span
+							className='new-ticket__yes'
+							onClick={() => this.confirmPopup()}>
+							Yes
+						</span>
+						<span
+							className='new-ticket__no'
+							onClick={() => this.displayConfirm()}>
+							No
+						</span>
+					</div>
 				</div>
 			</div>
 		);

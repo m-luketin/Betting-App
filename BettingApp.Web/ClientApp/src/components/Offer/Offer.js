@@ -77,27 +77,52 @@ class Offer extends Component {
 		);
 	};
 
-	handlePairs = (homeTeam, awayTeam, betType, matchId, quota, id) => {
+	addPair = (homeTeam, awayTeam, betType, matchId, quota, id, isTopOffer, dateTime) => {
 		let objectToAdd = {
 			homeTeam: homeTeam,
 			awayTeam: awayTeam,
 			betType: betType,
 			matchId: matchId,
 			quota: quota,
-			id: id
+			id: id,
+			isTopOffer: isTopOffer,
+			dateTime: dateTime
 		};
+		
+		console.log(this.state);
 
-		let index = -1;
+		let identicalIndex = -1;
+		let topOfferIndex = -1;
+		console.log(identicalIndex, topOfferIndex);
+
 		for (var i = 0; i < this.state.selectedPairs.length; i++) {
-			if (this.state.selectedPairs[i].matchId === matchId) {
-				index = i;
-				break;
+			if (
+				this.state.selectedPairs[i].homeTeam === homeTeam &&
+				this.state.selectedPairs[i].awayTeam === awayTeam &&
+				this.state.selectedPairs[i].dateTime === dateTime
+			) {
+				identicalIndex = i;
+			}
+
+			if (this.state.selectedPairs[i].isTopOffer) {
+				topOfferIndex = i;
 			}
 		}
 
-		if (index > -1) {
-			let newState = this.state.selectedPairs;
-			newState.splice(index, 1, objectToAdd);
+		let newState = this.state.selectedPairs;
+		if (identicalIndex > -1 && !(topOfferIndex > -1)) {
+			newState.splice(identicalIndex, 1, objectToAdd);
+			this.setState({
+				selectedPairs: newState
+			});
+		}
+		else if (topOfferIndex > -1 && !(identicalIndex > -1)) {
+			newState.splice(topOfferIndex, 1, objectToAdd);
+			this.setState({
+				selectedPairs: newState
+			});
+		} else if (identicalIndex > -1 && topOfferIndex > -1) {
+			newState.splice(topOfferIndex, 1, objectToAdd);
 			this.setState({
 				selectedPairs: newState
 			});
@@ -107,6 +132,10 @@ class Offer extends Component {
 			});
 		}
 	};
+
+	removePairs() {
+		this.setState({ selectedPairs: [] });
+	}
 
 	handleTopOffers() {
 		Axios.get(`api/match/top-offer/${this.state.currentSport}`).then(response => {
@@ -120,7 +149,6 @@ class Offer extends Component {
 		Axios.get('api/user/balance/1').then(response => {
 			this.state.balance = response.data;
 		});
-
 	}
 
 	render() {
@@ -142,8 +170,26 @@ class Offer extends Component {
 					</div>
 					<PairList
 						pairs={this.state.pairs}
-						pairHandler={(homeTeam, awayTeam, betType, matchId, quota, id) =>
-							this.handlePairs(homeTeam, awayTeam, betType, matchId, quota, id)
+						pairHandler={(
+							homeTeam,
+							awayTeam,
+							betType,
+							matchId,
+							quota,
+							id,
+							isTopOffer,
+							dateTime
+						) =>
+							this.addPair(
+								homeTeam,
+								awayTeam,
+								betType,
+								matchId,
+								quota,
+								id,
+								isTopOffer,
+								dateTime
+							)
 						}
 					/>
 					<div className='right-column'>
@@ -151,6 +197,7 @@ class Offer extends Component {
 							selectedPairs={this.state.selectedPairs}
 							totalQuota={this.state.totalQuota}
 							balance={this.state.balance}
+							pairRemover={() => this.removePairs()}
 						/>
 					</div>
 				</main>

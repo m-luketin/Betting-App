@@ -117,7 +117,6 @@ namespace BettingApp.Domain.Repositories.Implementations
                 }
             }
 
-
             // editing winning/losing tickets
             var ticketsToEdit = _context.Tickets
                 .Where(t => t.Status == TicketStatus.InProgress)
@@ -143,7 +142,10 @@ namespace BettingApp.Domain.Repositories.Implementations
                 }
 
                 if(status == "win")
+                {
                     ticket.Status = TicketStatus.Won;
+                    ticket.User.CurrentFunds += 0.95 * ticket.MoneyBet * ticket.TotalQuota;
+                }
                 else if(status == "lose")
                     ticket.Status = TicketStatus.Lost;
             }

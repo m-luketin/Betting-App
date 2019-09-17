@@ -11,24 +11,36 @@
     color: black;
     font-size: 22px;
     font-weight: 600;
-    padding-left: 7px;
+    padding: 0 5px;
+    width: 614px;
 }
 
-.bet-types {
+.header__bet-types {
     display: flex;
     justify-content: space-between;
-    width: 275px;
-    margin-right: 20px;
+    width: 300px;
+}
+
+.header__bet-type {
+    text-align: center;
+    width: 40px;
 }
 
 .pair-list__pair {
 	display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     font-size: 20px;
-    padding: 8px;
+    padding: 8px 3px;
     border: 1px solid black;
     width: 100%;
+}
+
+.pair__time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55px;
 }
 
 .pair__teams {
