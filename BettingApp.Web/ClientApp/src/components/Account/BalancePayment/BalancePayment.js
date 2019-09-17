@@ -84,7 +84,9 @@ class BalancePayment extends Component {
 						onChange={() => this.setPayment()}
 					/>
 				</div>
-				<div className='balance-payment__warning'>{this.state.warning}</div>
+				<div className='balance-payment__warning'>
+					<span className='warning__message'>{this.state.warning}</span>
+				</div>
 				<div className='balance-payment__button'>
 					<button
 						id='balance-payment__button'
@@ -94,17 +96,13 @@ class BalancePayment extends Component {
 						Confirm
 					</button>
 				</div>
-				<div
-					className='balance-payment__popup display-none'
-					id='balance-payment__popup'>
+				<div className='balance-payment__popup display-none' id='balance-payment__popup'>
 					<span
 						className='balance-payment__yes'
 						onClick={() => this.confirmUserBalance()}>
 						Yes
 					</span>
-					<span
-						className='balance-payment__no'
-						onClick={() => this.displayConfirm()}>
+					<span className='balance-payment__no' onClick={() => this.displayConfirm()}>
 						No
 					</span>
 				</div>
