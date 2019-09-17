@@ -7,7 +7,7 @@ const Transactions = (props) => {
 			<div className='transactions__titles'>
 				<span className='titles__title titles__title--left'>Date</span>
 				<span className='titles__title titles__title--centerleft'>Time</span>
-				<span className='titles__title titles__title--centerright'>Balance</span>
+				<span className='titles__title titles__title--centerright'>Amount</span>
 				<span className='titles__title titles__title--right'>Type</span>
 			</div>
 			<div className='transactions'>

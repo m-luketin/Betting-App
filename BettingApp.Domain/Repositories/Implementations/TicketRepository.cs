@@ -63,15 +63,37 @@ namespace BettingApp.Domain.Repositories.Implementations
 
         public List<Ticket> GetUserTickets(int userId)
         {
-            return _context.Tickets.Where(t => t.UserId == userId).Include(t => t.TicketPairs)
+            var ticketsToGet = _context.Tickets.Where(t => t.UserId == userId)
+                .Include(t => t.TicketPairs)
                 .ThenInclude(tp => tp.Pair)
                 .ThenInclude(p => p.BetType)
                 .Include(t => t.TicketPairs)
                 .ThenInclude(tp => tp.Pair)
                 .ThenInclude(p => p.Match)
                 .ThenInclude(m => m.TeamMatches)
-                .ThenInclude(tm => tm.Team).OrderByDescending(t => t.IssuedAt)
+                .ThenInclude(tm => tm.Team)
+                .OrderByDescending(t => t.IssuedAt)
                 .ToList();
+
+            // nulling circular references
+            foreach(var ticket in ticketsToGet)
+            {
+                foreach(var ticketPair in ticket.TicketPairs)
+                {
+                    ticketPair.Ticket = null;
+                    ticketPair.Pair.TicketPairs = null;
+                    ticketPair.Pair.BetType.Pairs = null;
+                    ticketPair.Pair.Match.Pairs = null;
+
+                    foreach(var teamMatch in ticketPair.Pair.Match.TeamMatches)
+                    {
+                        teamMatch.Match = null;
+                        teamMatch.Team.TeamMatches = null;
+                    }
+                }
+            }
+
+            return ticketsToGet;
         }
     }
 }

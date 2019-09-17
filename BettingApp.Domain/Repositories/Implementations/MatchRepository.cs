@@ -28,7 +28,22 @@ namespace BettingApp.Domain.Repositories.Implementations
                 m.StartsAt.Day == day && m.StartsAt.Month == month && m.StartsAt.Year == year && !m.IsTopOffer
                 && string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase))
                 .Include(m => m.Pairs).ThenInclude(p => p.BetType).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
-                .ToList();
+                .OrderByDescending(m => m.StartsAt).ToList();
+
+            foreach(var match in matchesToGet)
+            {
+                foreach(var pair in match.Pairs)
+                {
+                    pair.Match = null;
+                    pair.BetType.Pairs = null;
+                }
+
+                foreach(var teamMatch in match.TeamMatches)
+                {
+                    teamMatch.Match = null;
+                    teamMatch.Team.TeamMatches = null;
+                }
+            }
 
             return matchesToGet;
         }
