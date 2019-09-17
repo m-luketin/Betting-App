@@ -28,6 +28,7 @@ namespace BettingApp.Web.Controllers
             var totalQuota = Convert.ToDouble(data["totalQuota"]);
             var pairIdJson = data["pairIds"];
             var pairIds = pairIdJson.Select(x => (int)x).ToList();
+            
             var wasAddSuccessful = _ticketRepository.AddTicket(moneyBet, totalQuota, pairIds);
 
             if(wasAddSuccessful)

@@ -75,8 +75,8 @@ namespace BettingApp.Domain.Repositories.Implementations
                 }
                 else
                 {
-                        Random rnd = new Random();
-                        var whoWon = rnd.Next(1, 2);
+                    Random rnd = new Random();
+                    var whoWon = rnd.Next(1, 2);
 
                     if(whoWon == 1)
                     {

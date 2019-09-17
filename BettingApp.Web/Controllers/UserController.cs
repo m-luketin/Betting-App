@@ -29,7 +29,12 @@ namespace BettingApp.Web.Controllers
         public IActionResult EditUserBalance([FromBody]JObject data)
         {
             var balanceToAdd = Convert.ToDouble(data["balanceToAdd"]);
-            return Ok(_userRepository.AddUserBalance(balanceToAdd));
+
+            var addedBalance = _userRepository.AddUserBalance(balanceToAdd);
+            if(addedBalance != 0)
+                return Ok(addedBalance);
+
+            return Forbid();
         }
     }
 }

@@ -85,8 +85,8 @@ class NewTicket extends Component {
 		// resetting
 		this.props.pairRemover();
 		this.displayConfirm();
-		this.setState({bet: 0});
-		document.getElementById("bet__input").value = "";
+		this.setState({ bet: 0 });
+		document.getElementById('bet__input').value = '';
 		this.setState({ warning: '' });
 	}
 
@@ -109,10 +109,14 @@ class NewTicket extends Component {
 					{this.props.selectedPairs.map((value, key) => {
 						return (
 							<div className='pairs__pair'>
-								<span className='ticket-pair__teams'>
+								<div className='ticket-pair__time'>
+									<span>{value.dateTime.substring(5, 10)}</span>
+									<span>{value.dateTime.substring(11, 16)}</span>
+								</div>
+								<div className='ticket-pair__teams'>
 									<span>{value.homeTeam}</span>
 									<span>{value.awayTeam}</span>
-								</span>
+								</div>
 								<span className='pair__bettype'>
 									{this.convertBetType(value.betType)}
 								</span>
@@ -149,14 +153,10 @@ class NewTicket extends Component {
 						Confirm
 					</span>
 					<div className='new-ticket__popup  display-none' id='new-ticket__popup'>
-						<span
-							className='new-ticket__yes'
-							onClick={() => this.confirmPopup()}>
+						<span className='new-ticket__yes' onClick={() => this.confirmPopup()}>
 							Yes
 						</span>
-						<span
-							className='new-ticket__no'
-							onClick={() => this.displayConfirm()}>
+						<span className='new-ticket__no' onClick={() => this.displayConfirm()}>
 							No
 						</span>
 					</div>

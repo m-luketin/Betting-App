@@ -17,14 +17,6 @@ namespace BettingApp.Domain.Repositories.Implementations
         }
         private readonly BettingAppContext _context;
 
-        public List<Match> GetFutureMatches()
-        {
-            var matchesToGet = _context.Matches.Where(m =>
-                m.StartsAt - DateTime.Now > new TimeSpan(0, 0, 0)).ToList();
-
-            return matchesToGet;
-        }
-
         public List<Match> GetMatchesBySportAndDate(string sport, string date)
         {
             var parsedDate = date.Split('-');

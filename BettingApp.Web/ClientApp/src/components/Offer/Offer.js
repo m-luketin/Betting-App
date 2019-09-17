@@ -128,7 +128,7 @@ class Offer extends Component {
 			});
 		} else {
 			this.setState({
-				selectedPairs: [...this.state.selectedPairs, objectToAdd]
+				selectedPairs: [objectToAdd, ...this.state.selectedPairs]
 			});
 		}
 	};

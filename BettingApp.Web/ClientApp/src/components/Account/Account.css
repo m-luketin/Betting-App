@@ -1,6 +1,9 @@
 .account {
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid black;
+    width: 1536px;
+    margin: auto;
 }
 
 .account__column--left, .account__column--right {

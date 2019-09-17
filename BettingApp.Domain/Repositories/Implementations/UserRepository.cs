@@ -18,6 +18,9 @@ namespace BettingApp.Domain.Repositories.Implementations
 
         public double AddUserBalance(double balanceToAdd)
         {
+            if(!(balanceToAdd > 0 && balanceToAdd < 10000))
+                return 0;
+
             var user = _context.Users.Find(1);
 
             user.CurrentFunds += balanceToAdd;
@@ -33,7 +36,6 @@ namespace BettingApp.Domain.Repositories.Implementations
             _context.Transactions.Add(transactionToAdd);
 
             _context.SaveChanges();
-
             return user.CurrentFunds;
         }
 

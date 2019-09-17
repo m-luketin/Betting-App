@@ -3,6 +3,7 @@ main {
     flex-direction: row;
     justify-content: space-between;
     font-family: sans-serif;
+    margin: auto;
 }
 
 .left-column, .right-column {
@@ -17,4 +18,6 @@ main {
 
 .offer {
     width: 1536px;
+    margin:auto;
+    border: 1px solid black;
 }

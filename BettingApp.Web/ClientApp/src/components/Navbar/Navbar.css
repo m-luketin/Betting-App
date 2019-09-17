@@ -1,6 +1,7 @@
 .navbar {
     display: flex;
-    width: 100%;
+    width: 1536px;
+    margin: auto;
     justify-content: center;
     align-items: center;
     background-color: black;

@@ -20,6 +20,13 @@ namespace BettingApp.Domain.Repositories.Implementations
 
         public bool AddTicket(double moneyBet, double totalQuota, List<int> pairIds)
         {
+            if(!(moneyBet > 0 && moneyBet <= 1000) || pairIds.Count < 3)
+                return false;
+
+            var user = _context.Users.Find(1);
+            if(user.CurrentFunds < moneyBet)
+                return false;
+
             var ticketToAdd = new Ticket
             {
                 UserId = 1,
@@ -30,7 +37,6 @@ namespace BettingApp.Domain.Repositories.Implementations
             };
 
             var wasSucessful = _context.Tickets.Add(ticketToAdd);
-
             if(wasSucessful == null)
                 return false;
 
@@ -39,7 +45,6 @@ namespace BettingApp.Domain.Repositories.Implementations
                 _context.TicketPairs.Add(new TicketPair { TicketId = ticketToAdd.Id, PairId = pairId });
             }
 
-            var user = _context.Users.Find(1);
             user.CurrentFunds -= moneyBet;
 
             var transactionToAdd = new Transaction

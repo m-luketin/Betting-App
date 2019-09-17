@@ -17,17 +17,13 @@ namespace BettingApp.Web.Controllers
             _matchRepository = matchRepository;
         }
         private readonly IMatchRepository _matchRepository;
-
-        [HttpGet("future")]
-        public IActionResult GetFutureMatches()
-        {
-            return Ok(_matchRepository.GetFutureMatches());
-        }
+        
         [HttpGet("{sport}/{date}")]
         public IActionResult GetMatchesBySportAndDate(string sport, string date)
         {
             return Ok(_matchRepository.GetMatchesBySportAndDate(sport,date));
         }
+           
         [HttpGet("top-offer/{sport}")]
         public IActionResult GetTopOffer(string sport)
         {
