@@ -37,7 +37,7 @@ class NewTicket extends Component {
 
 	calculateTotalQuota() {
 		let totalQuota = 1;
-		this.props.selectedPairs.map(value => {
+		this.props.selectedPairs.forEach(value => {
 			totalQuota *= value.quota;
 		});
 
@@ -73,9 +73,10 @@ class NewTicket extends Component {
 
 	confirmPopup() {
 		let pairIds = [];
-		this.props.selectedPairs.map(pair => {
+		this.props.selectedPairs.forEach(pair => {
 			pairIds.push(pair.id);
 		});
+		
 		Axios.post('api/ticket/add', {
 			moneyBet: this.state.bet,
 			totalQuota: this.calculateTotalQuota(),

@@ -147,7 +147,7 @@ class Offer extends Component {
 		this.getNewPairs(this.state.currentSport, this.state.currentDate);
 
 		Axios.get('api/user/balance/1').then(response => {
-			this.state.balance = response.data;
+			this.setState({ balance: response.data});
 		});
 	}
 

@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import './Tickets.css';
 
 class Tickets extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {};
-	}
-
 	normalizeCurrency(currency) {
 		return Math.round(currency * 100) / 100;
 	}
@@ -15,9 +9,9 @@ class Tickets extends Component {
 	render() {
 		return (
 			<div className='tickets'>
-				{this.props.tickets.map(ticket => {
+				{this.props.tickets.map((ticket, key) => {
 					return (
-						<div className='tickets__ticket-view'>
+						<div key={key} className='tickets__ticket-view'>
 							<div className='ticket-view__time'>
 								<span className='time__title'>Issued at:</span>
 								<span className='time__hours'>
@@ -28,13 +22,13 @@ class Tickets extends Component {
 								</span>
 							</div>
 							<div className='ticket-view__pairs-view'>
-								{ticket.ticketPairs.map(ticketPair => {
+								{ticket.ticketPairs.map((ticketPair, key) => {
 									return (
-										<div className='pairs-view__pair-view'>
+										<div key ={key} className='pairs-view__pair-view'>
 											<div className='pair-view__teams'>
 												{ticketPair.pair.match.teamMatches.map(
-													teamMatch => {
-														return <span>{teamMatch.team.name}</span>;
+													(teamMatch, key) => {
+														return <span key={key}>{teamMatch.team.name}</span>;
 													}
 												)}
 											</div>
