@@ -10,8 +10,8 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 461px;
-    height: 671px;
+    width: 460px;
+    height: 670px;
     background-color: darkgreen;
     border: 1px solid black;
 }

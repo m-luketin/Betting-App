@@ -9,14 +9,15 @@
 .account__column--left, .account__column--right {
     display: flex;
     flex-direction: column;
-    height: 671px;
-    width: 461px;
+    height: 670px;
+    width: 460px;
     justify-items: center;
     background-color: darkgreen;
 }
 
 .account__tickets {
     width: 614px;
+    height: 670px;
     display: flex;
     justify-content: center;
 }
