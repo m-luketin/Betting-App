@@ -73,7 +73,7 @@
 
 .pair__quotas {
 	display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 40%;
 }
 
@@ -84,12 +84,13 @@
 
 .quotas__quota {
 	border: 1px solid black;
-    padding: 1px 2px;
+    padding: 1px 1px;
     font-size: 16px;
-	width: 40px;
+	width: 35px;
     text-align: center;
     background-color: black;
     color: white;
+    margin-left: 8px;
 }
 
 .quotas__quota:hover {
