@@ -14,6 +14,6 @@ namespace BettingApp.Data.Entities.Models
         public double MoneyBet { get; set; }
         public TicketStatus Status{ get; set; }
         public double TotalQuota { get; set; }
-        public ICollection<TicketPair> TicketPairs { get; set; }
+        public ICollection<TicketBetOffer> TicketBetOffers { get; set; }
     }
 }

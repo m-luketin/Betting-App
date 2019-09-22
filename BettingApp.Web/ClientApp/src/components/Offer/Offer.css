@@ -10,7 +10,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 460px;
+    width: 432px;
     height: 670px;
     background-color: darkgreen;
     border: 1px solid black;

@@ -18,14 +18,22 @@ namespace BettingApp.Domain.Repositories.Implementations
         }
         private readonly BettingAppContext _context;
 
-        public bool AddTicket(double moneyBet, double totalQuota, List<int> pairIds)
+        public bool AddTicket(double moneyBet, List<int> BetOfferIds)
         {
-            if(!(moneyBet > 0 && moneyBet <= 1000) || pairIds.Count < 3)
+            if(!(moneyBet > 0 && moneyBet <= 1000) || BetOfferIds.Count < 3)
                 return false;
 
             var user = _context.Users.Find(1);
             if(user.CurrentFunds < moneyBet)
                 return false;
+
+            var betOffersOnTicket = _context.BetOffers.Where(bo => BetOfferIds.Contains(bo.Id)).ToList();
+            var totalQuota = 1.0;
+
+            foreach(var betOffer in betOffersOnTicket)
+            {
+                totalQuota *= betOffer.Quota;
+            }
 
             var ticketToAdd = new Ticket
             {
@@ -36,13 +44,13 @@ namespace BettingApp.Domain.Repositories.Implementations
                 TotalQuota = totalQuota
             };
 
-            var wasSucessful = _context.Tickets.Add(ticketToAdd);
-            if(wasSucessful == null)
+            var wasSuccessful = _context.Tickets.Add(ticketToAdd);
+            if(wasSuccessful == null)
                 return false;
 
-            foreach(var pairId in pairIds)
+            foreach(var BetOfferId in BetOfferIds)
             {
-                _context.TicketPairs.Add(new TicketPair { TicketId = ticketToAdd.Id, PairId = pairId });
+                _context.TicketBetOffers.Add(new TicketBetOffer { TicketId = ticketToAdd.Id, BetOfferId = BetOfferId });
             }
 
             user.CurrentFunds -= moneyBet;
@@ -64,32 +72,38 @@ namespace BettingApp.Domain.Repositories.Implementations
         public List<Ticket> GetUserTickets(int userId)
         {
             var ticketsToGet = _context.Tickets.Where(t => t.UserId == userId)
-                .Include(t => t.TicketPairs)
-                .ThenInclude(tp => tp.Pair)
+                .Include(t => t.TicketBetOffers)
+                .ThenInclude(tp => tp.BetOffer)
                 .ThenInclude(p => p.BetType)
-                .Include(t => t.TicketPairs)
-                .ThenInclude(tp => tp.Pair)
+                .Include(t => t.TicketBetOffers)
+                .ThenInclude(tbo => tbo.BetOffer)
                 .ThenInclude(p => p.Match)
-                .ThenInclude(m => m.TeamMatches)
-                .ThenInclude(tm => tm.Team)
+                .ThenInclude(m => m.HomeTeam)
+                .Include(t => t.TicketBetOffers)
+                .ThenInclude(tbo => tbo.BetOffer)
+                .ThenInclude(p => p.Match)
+                .ThenInclude(m => m.AwayTeam)
+                .Include(t => t.TicketBetOffers)
+                .ThenInclude(tbo => tbo.BetOffer)
+                .ThenInclude(p => p.Match)
+                .ThenInclude(m => m.Sport)
                 .OrderByDescending(t => t.IssuedAt)
                 .ToList();
 
             // nulling circular references
             foreach(var ticket in ticketsToGet)
             {
-                foreach(var ticketPair in ticket.TicketPairs)
+                foreach(var ticketBetOffer in ticket.TicketBetOffers)
                 {
-                    ticketPair.Ticket = null;
-                    ticketPair.Pair.TicketPairs = null;
-                    ticketPair.Pair.BetType.Pairs = null;
-                    ticketPair.Pair.Match.Pairs = null;
-
-                    foreach(var teamMatch in ticketPair.Pair.Match.TeamMatches)
-                    {
-                        teamMatch.Match = null;
-                        teamMatch.Team.TeamMatches = null;
-                    }
+                    ticketBetOffer.Ticket = null;
+                    ticketBetOffer.BetOffer.TicketBetOffers = null;
+                    ticketBetOffer.BetOffer.BetType.BetOffers = null;
+                    ticketBetOffer.BetOffer.Match.BetOffers = null;
+                    ticketBetOffer.BetOffer.Match.HomeTeam.HomeMatches = null;
+                    ticketBetOffer.BetOffer.Match.HomeTeam.AwayMatches = null;
+                    ticketBetOffer.BetOffer.Match.AwayTeam.HomeMatches = null;
+                    ticketBetOffer.BetOffer.Match.AwayTeam.AwayMatches = null;
+                    ticketBetOffer.BetOffer.Match.Sport.Matches = null;
                 }
             }
 

@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    width: 1534px;
+    width: 100%;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
 }
 
 .navbar__element {
-    width: 20%;
+    width: 26.5%;
     height: 50px;
     margin: 0;
     font-family: sans-serif;

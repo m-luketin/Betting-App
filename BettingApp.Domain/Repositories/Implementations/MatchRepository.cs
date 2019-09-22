@@ -19,42 +19,125 @@ namespace BettingApp.Domain.Repositories.Implementations
 
         public List<Match> GetMatchesBySportAndDate(string sport, string date)
         {
-            var parsedDate = date.Split('-');
-            var day = int.Parse(parsedDate[2]);
-            var month = int.Parse(parsedDate[1]);
-            var year = int.Parse(parsedDate[0]);
+            var matchesToGet = new List<Match>();
 
-            var matchesToGet = _context.Matches.Where(m =>
-                m.StartsAt.Day == day && m.StartsAt.Month == month && m.StartsAt.Year == year && !m.IsTopOffer
-                && string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase))
-                .Include(m => m.Pairs).ThenInclude(p => p.BetType).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
-                .OrderByDescending(m => m.StartsAt).ToList();
-
-            foreach(var match in matchesToGet)
+            if(date == "all" && sport == "All")
             {
-                foreach(var pair in match.Pairs)
-                {
-                    pair.Match = null;
-                    pair.BetType.Pairs = null;
-                }
+                matchesToGet = _context.Matches.Where(m => m.EndedAt == null && !m.IsTopOffer)
+                    .Include(m => m.BetOffers)
+                    .ThenInclude(p => p.BetType)
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.AwayTeam)
+                    .Include(m => m.Sport)
+                    .OrderBy(m => m.StartsAt)
+                    .ToList();
+            }
+            else if(date == "all")
+            {
+                matchesToGet = _context.Matches.Where(m => m.EndedAt == null && !m.IsTopOffer 
+                    && string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase))
+                    .Include(m => m.BetOffers)
+                    .ThenInclude(p => p.BetType)
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.AwayTeam)
+                    .Include(m => m.Sport)
+                    .OrderBy(m => m.StartsAt)
+                    .ToList();
+            }
+            else
+            {
+                var parsedDate = date.Split('-');
+                var day = int.Parse(parsedDate[2]);
+                var month = int.Parse(parsedDate[1]);
+                var year = int.Parse(parsedDate[0]);
 
-                foreach(var teamMatch in match.TeamMatches)
+                if(sport == "All")
                 {
-                    teamMatch.Match = null;
-                    teamMatch.Team.TeamMatches = null;
+                    matchesToGet = _context.Matches.Where(m => m.EndedAt == null && m.StartsAt.Day == day 
+                        && m.StartsAt.Month == month && m.StartsAt.Year == year && !m.IsTopOffer)
+                        .Include(m => m.BetOffers)
+                        .ThenInclude(p => p.BetType)
+                        .Include(m => m.HomeTeam)
+                        .Include(m => m.AwayTeam)
+                        .Include(m => m.Sport)
+                        .OrderBy(m => m.StartsAt)
+                        .ToList();
+                }
+                else
+                {
+                    matchesToGet = _context.Matches.Where(m => m.EndedAt == null && m.StartsAt.Day == day 
+                        && m.StartsAt.Month == month && m.StartsAt.Year == year && !m.IsTopOffer
+                        && string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase))
+                        .Include(m => m.BetOffers)
+                        .ThenInclude(p => p.BetType)
+                        .Include(m => m.HomeTeam)
+                        .Include(m => m.AwayTeam)
+                        .Include(m => m.Sport)
+                        .OrderBy(m => m.StartsAt)
+                        .ToList();
                 }
             }
 
+            foreach(var match in matchesToGet)
+            {
+                match.Sport.Matches = null;
+                match.HomeTeam.HomeMatches = null;
+                match.HomeTeam.AwayMatches = null;
+                match.AwayTeam.HomeMatches = null;
+                match.AwayTeam.AwayMatches = null;
+
+                foreach(var BetOffer in match.BetOffers)
+                {
+                    BetOffer.Match = null;
+                    BetOffer.BetType.BetOffers = null;
+                }
+            }
             return matchesToGet;
         }
 
         public List<Match> GetTopOfferBySport(string sport)
         {
-            var matchesToGet = _context.Matches.Where(m =>
-            string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase) && m.EndedAt == null && m.IsTopOffer)
-                .Include(m => m.Pairs).ThenInclude(p => p.BetType).Include(m => m.TeamMatches).ThenInclude(tm => tm.Team)
-                .ToList();
+            var matchesToGet = new List<Match>();
 
+            if(sport != "All")
+            {
+                matchesToGet = _context.Matches.Where(m =>
+                string.Equals(m.Sport.Name, sport, StringComparison.CurrentCultureIgnoreCase) && m.EndedAt == null && m.IsTopOffer)
+                    .Include(m => m.BetOffers)
+                    .ThenInclude(p => p.BetType)
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.AwayTeam)
+                    .Include(m => m.Sport)
+                    .OrderBy(m => m.StartsAt)
+                    .ToList();
+            }
+            else
+            {
+                matchesToGet = _context.Matches.Where(m => m.EndedAt == null && m.IsTopOffer)
+                    .Include(m => m.BetOffers)
+                    .ThenInclude(p => p.BetType)
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.AwayTeam)
+                    .Include(m => m.Sport)
+                    .OrderBy(m => m.StartsAt)
+                    .ToList();
+
+            }
+
+            foreach(var match in matchesToGet)
+            {
+                match.HomeTeam.HomeMatches = null;
+                match.HomeTeam.AwayMatches = null;
+                match.AwayTeam.HomeMatches = null;
+                match.AwayTeam.AwayMatches = null;
+                match.Sport.Matches = null;
+
+                foreach(var BetOffer in match.BetOffers)
+                {
+                    BetOffer.Match = null;
+                    BetOffer.BetType.BetOffers = null;
+                }
+            }
             return matchesToGet;
         }
     }

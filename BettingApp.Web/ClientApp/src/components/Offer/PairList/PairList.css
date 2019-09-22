@@ -1,7 +1,9 @@
 .pair-list {
 	display: flex;
     flex-direction: column;
-    width: 614px;
+    width: 670px;
+    height: 669px;
+    overflow-y: scroll
 }
 
 .pair-list__header {
@@ -11,26 +13,41 @@
     color: black;
     font-size: 22px;
     font-weight: 600;
-    padding: 0 5px;
-    width: 614px;
+    padding: 0 3px;
+    width: 100%;
+}
+
+.header__time {
+    width: 10%;
+    text-align: center;
+}
+
+.header__match {
+    width: 30%;
+    text-align: center;
 }
 
 .header__bet-types {
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 40%;
 }
 
 .header__bet-type {
-    text-align: center;
     width: 40px;
+    text-align: center;
+}
+
+.header__sport {
+    width: 15%;
+    text-align: center;
 }
 
 .pair-list__pair {
 	display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 18px;
     padding: 8px 3px;
     border: 1px solid black;
     width: 100%;
@@ -40,25 +57,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 55px;
+    width: 10%;
 }
 
 .pair__teams {
     display: flex;
     flex-direction: column;
-    width: 250px;
     align-items: center;
+    width: 30%;
 }
 
 .pair__teams span{
-    width: 200px;
     text-align: center;
 }
 
 .pair__quotas {
 	display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 40%;
+}
+
+.pair__sport {
+    width: 15%;
+    text-align: center;
 }
 
 .quotas__quota {
@@ -72,6 +93,11 @@
 }
 
 .quotas__quota:hover {
+    background-color: red;
+    color: black;
+}
+
+.quotas__quota--selected {
     background-color: red;
     color: black;
 }

@@ -4,14 +4,16 @@ using BettingApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BettingApp.Data.Migrations
 {
     [DbContext(typeof(BettingAppContext))]
-    partial class BettingAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190921152854_FixedTestEntries")]
+    partial class FixedTestEntries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1564,7 +1566,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 1,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 258, DateTimeKind.Local).AddTicks(9111)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 847, DateTimeKind.Local).AddTicks(9199)
                         },
                         new
                         {
@@ -1575,7 +1577,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 3,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5066)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1173)
                         },
                         new
                         {
@@ -1586,7 +1588,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 5,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5141)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1265)
                         },
                         new
                         {
@@ -1597,7 +1599,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 7,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5153)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1278)
                         },
                         new
                         {
@@ -1608,7 +1610,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 3,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5162)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1289)
                         },
                         new
                         {
@@ -1619,7 +1621,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 2,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5177)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1301)
                         },
                         new
                         {
@@ -1630,7 +1632,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 1,
                             IsTopOffer = false,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5187)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1313)
                         },
                         new
                         {
@@ -1641,7 +1643,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 11,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5196)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1325)
                         },
                         new
                         {
@@ -1652,7 +1654,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 14,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5206)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1336)
                         },
                         new
                         {
@@ -1663,7 +1665,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 17,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5215)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1346)
                         },
                         new
                         {
@@ -1674,7 +1676,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 11,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5224)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1357)
                         },
                         new
                         {
@@ -1685,7 +1687,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 15,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5234)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1368)
                         },
                         new
                         {
@@ -1696,7 +1698,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 17,
                             IsTopOffer = false,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5243)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1378)
                         },
                         new
                         {
@@ -1707,7 +1709,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 41,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5254)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1390)
                         },
                         new
                         {
@@ -1718,7 +1720,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 43,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5263)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1400)
                         },
                         new
                         {
@@ -1729,7 +1731,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 45,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5272)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1411)
                         },
                         new
                         {
@@ -1740,7 +1742,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 47,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5281)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1421)
                         },
                         new
                         {
@@ -1751,7 +1753,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 49,
                             IsTopOffer = false,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5291)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1720)
                         },
                         new
                         {
@@ -1762,7 +1764,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 21,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5300)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1734)
                         },
                         new
                         {
@@ -1773,7 +1775,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 23,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5310)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1746)
                         },
                         new
                         {
@@ -1784,7 +1786,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 25,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 23, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5319)
+                            StartsAt = new DateTime(2019, 9, 22, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1757)
                         },
                         new
                         {
@@ -1795,7 +1797,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 27,
                             IsTopOffer = false,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5329)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1768)
                         },
                         new
                         {
@@ -1806,7 +1808,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 31,
                             IsTopOffer = false,
                             SportId = 5,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5338)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1780)
                         },
                         new
                         {
@@ -1817,7 +1819,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 33,
                             IsTopOffer = false,
                             SportId = 5,
-                            StartsAt = new DateTime(2019, 9, 22, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5348)
+                            StartsAt = new DateTime(2019, 9, 21, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1790)
                         },
                         new
                         {
@@ -1828,7 +1830,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 35,
                             IsTopOffer = false,
                             SportId = 5,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5357)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1801)
                         },
                         new
                         {
@@ -1839,7 +1841,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 1,
                             IsTopOffer = true,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5366)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1813)
                         },
                         new
                         {
@@ -1850,7 +1852,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 3,
                             IsTopOffer = true,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5534)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1825)
                         },
                         new
                         {
@@ -1861,7 +1863,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 5,
                             IsTopOffer = true,
                             SportId = 1,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5544)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1836)
                         },
                         new
                         {
@@ -1872,7 +1874,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 44,
                             IsTopOffer = true,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5554)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1847)
                         },
                         new
                         {
@@ -1883,7 +1885,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 42,
                             IsTopOffer = true,
                             SportId = 2,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5563)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1859)
                         },
                         new
                         {
@@ -1894,7 +1896,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 20,
                             IsTopOffer = true,
                             SportId = 3,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5572)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1872)
                         },
                         new
                         {
@@ -1905,7 +1907,7 @@ namespace BettingApp.Data.Migrations
                             HomeTeamId = 30,
                             IsTopOffer = true,
                             SportId = 4,
-                            StartsAt = new DateTime(2019, 9, 24, 20, 12, 25, 262, DateTimeKind.Local).AddTicks(5581)
+                            StartsAt = new DateTime(2019, 9, 23, 17, 28, 52, 852, DateTimeKind.Local).AddTicks(1885)
                         },
                         new
                         {

@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190920172634_RestructuredDatabase.cs" />
+    <Compile Remove="Migrations\20190920175656_RestructuredDatabase.cs" />
+    <Compile Remove="Migrations\20190920211410_SeedByCurrentDay.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
   </ItemGroup>

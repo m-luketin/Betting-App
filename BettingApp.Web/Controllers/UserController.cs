@@ -31,10 +31,8 @@ namespace BettingApp.Web.Controllers
             var balanceToAdd = Convert.ToDouble(data["balanceToAdd"]);
 
             var addedBalance = _userRepository.AddUserBalance(balanceToAdd);
-            if(addedBalance != 0)
-                return Ok(addedBalance);
 
-            return Forbid();
+            return Ok(addedBalance);
         }
     }
 }

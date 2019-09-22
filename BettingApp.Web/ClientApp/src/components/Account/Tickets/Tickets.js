@@ -22,29 +22,39 @@ class Tickets extends Component {
 								</span>
 							</div>
 							<div className='ticket-view__pairs-view'>
-								{ticket.ticketPairs.map((ticketPair, key) => {
+								{ticket.ticketBetOffers.map((ticketBetOffer, key) => {
 									return (
 										<div key={key} className='pairs-view__pair-view'>
 											<div className='pair-view__time'>
-												<span>{ticketPair.pair.match.startsAt.substring(5, 10)}</span>
-												<span>{ticketPair.pair.match.startsAt.substring(11, 16)}</span>
+												<span>
+													{ticketBetOffer.betOffer.match.startsAt.substring(
+														5,
+														10
+													)}
+												</span>
+												<span>
+													{ticketBetOffer.betOffer.match.startsAt.substring(
+														11,
+														16
+													)}
+												</span>
 											</div>
 											<div className='pair-view__teams'>
-												{ticketPair.pair.match.teamMatches.map(
-													(teamMatch, key) => {
-														return (
-															<span key={key}>
-																{teamMatch.team.name}
-															</span>
-														);
-													}
-												)}
+												<span>
+													{ticketBetOffer.betOffer.match.homeTeam.name}
+												</span>
+												<span>
+													{ticketBetOffer.betOffer.match.awayTeam.name}
+												</span>
 											</div>
 											<span className='pair-view__bet-type'>
-												{ticketPair.pair.betType.type}
+												{ticketBetOffer.betOffer.betType.type}
 											</span>
 											<span className='pair-view__quota'>
-												{ticketPair.pair.quota}
+												{ticketBetOffer.betOffer.quota}
+											</span>
+											<span className='pair-view__sport'>
+												{ticketBetOffer.betOffer.match.sport.name}
 											</span>
 										</div>
 									);

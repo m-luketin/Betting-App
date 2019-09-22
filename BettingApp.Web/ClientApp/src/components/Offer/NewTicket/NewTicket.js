@@ -12,25 +12,6 @@ class NewTicket extends Component {
 		};
 	}
 
-	convertBetType(betId) {
-		switch (betId) {
-			case 1:
-				return '1';
-			case 2:
-				return '2';
-			case 3:
-				return '1X';
-			case 4:
-				return '2X';
-			case 5:
-				return 'X';
-			case 6:
-				return '12';
-			default:
-				break;
-		}
-	}
-
 	setBet() {
 		this.setState({ bet: document.getElementById('bet__input').value });
 	}
@@ -45,12 +26,14 @@ class NewTicket extends Component {
 	}
 
 	calculateTotal() {
-		return Math.round(this.state.bet * this.calculateTotalQuota() * 95) / 100;
+		if (this.state.bet > 0)
+			return Math.round(this.state.bet * this.calculateTotalQuota() * 95) / 100;
+		else return 0;
 	}
 
 	confirmTicket() {
-		if (this.props.selectedPairs.length < 3) {
-			this.setState({ warning: 'Minimum number of pairs is 3' });
+		if (this.props.selectedPairs.length < 1) {
+			this.setState({ warning: 'Please select a pair' });
 			return;
 		} else if (!this.state.bet) {
 			this.setState({ warning: 'Please select bet money' });
@@ -76,15 +59,13 @@ class NewTicket extends Component {
 		this.props.selectedPairs.forEach(pair => {
 			pairIds.push(pair.id);
 		});
-		
+
 		Axios.post('api/ticket/add', {
 			moneyBet: this.state.bet,
-			totalQuota: this.calculateTotalQuota(),
 			pairIds: pairIds
 		});
 
 		// resetting
-		this.props.pairRemover();
 		this.displayConfirm();
 		this.setState({ bet: 0 });
 		document.getElementById('bet__input').value = '';
@@ -109,19 +90,45 @@ class NewTicket extends Component {
 				<div className='new-ticket__pairs'>
 					{this.props.selectedPairs.map((value, key) => {
 						return (
-							<div className='pairs__pair'>
-								<div className='ticket-pair__time'>
-									<span>{value.dateTime.substring(5, 10)}</span>
-									<span>{value.dateTime.substring(11, 16)}</span>
-								</div>
-								<div className='ticket-pair__teams'>
-									<span>{value.homeTeam}</span>
-									<span>{value.awayTeam}</span>
-								</div>
-								<span className='pair__bettype'>
-									{this.convertBetType(value.betType)}
+							<div className='pair__wrapper'>
+								<span
+									className='pair__delete'
+									onClick={() =>
+										this.props.pairRemover(
+											value.startsAt,
+											value.homeTeam,
+											value.awayTeam
+										)
+									}>
+									X
 								</span>
-								<span className='pair__quota'>{value.quota}</span>
+								<div className='pairs__pair'>
+									<div className='ticket-pair__time'>
+										<span>
+											{value.startsAt.substring(5, 7)}/
+											{value.startsAt.substring(8, 10)}
+										</span>
+										<span>{value.startsAt.substring(11, 16)}</span>
+									</div>
+									<div className='ticket-pair__teams'>
+										<span>{value.homeTeam}</span>
+										<span>{value.awayTeam}</span>
+									</div>
+									<div className='ticket-pair__details'>
+										<div className='ticket-pair__bettype'>
+											<span>Bet type:</span>
+											<span>{value.betType}</span>
+										</div>
+										<div className='ticket-pair__quota'>
+											<span>Quota:</span>
+											<span>{value.quota}</span>
+										</div>
+										<div className='ticket-pair__sport'>
+											<span>Sport:</span>
+											<span>{value.sport}</span>
+										</div>
+									</div>
+								</div>
 							</div>
 						);
 					})}
@@ -162,6 +169,7 @@ class NewTicket extends Component {
 						</span>
 					</div>
 				</div>
+					<span className="new-ticket__disclaimer">* Your bet is deducted 5% for manipulative expenditures</span>
 			</div>
 		);
 	}

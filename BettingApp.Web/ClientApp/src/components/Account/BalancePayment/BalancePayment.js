@@ -45,7 +45,7 @@ class BalancePayment extends Component {
 	}
 
 	confirmUserBalance() {
-		Axios.post('api/user/edit-balance', { balanceToAdd: this.state.balanceToAdd })
+		Axios.post('api/user/edit-balance', { balanceToAdd: Math.round(this.state.balanceToAdd * 100) / 100 })
 			.then(response => {
 				this.setState({ currentFunds: response.data });
 			})

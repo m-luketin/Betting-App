@@ -8,48 +8,56 @@ class PairList extends Component {
 		this.state = {};
 	}
 
-	getHeaderBetTypes() {
-		if (this.props.pairs[0] !== undefined) {
-			return this.props.pairs[0].pairs.map(pair => {
-				return <span className="header__bet-type">{pair.betType.type}</span>;
-			});
-		}
-	}
-
 	render() {
 		return (
 			<div className='pair-list'>
 				<div className='pair-list__header'>
-					<span>Time</span>
-					<span>Match</span>
-					<div className='header__bet-types'>{this.getHeaderBetTypes()}</div>
+					<span className='header__time'>Time</span>
+					<span className='header__match'>Match</span>
+					<div className='header__bet-types'>
+						<span className='header__bet-type'>1</span>
+						<span className='header__bet-type'>2</span>
+						<span className='header__bet-type'>X</span>
+						<span className='header__bet-type'>1X</span>
+						<span className='header__bet-type'>2X</span>
+						<span className='header__bet-type'>12</span>
+					</div>
+					<span className='header__sport'>Sport</span>
 				</div>
-				{this.props.pairs.map(item => {
+				{this.props.pairs.map((item, firstKey) => {
 					return (
 						<div className='pair-list__pair'>
 							<div className='pair__time'>
-								<span>{item.startsAt.substring(5, 10)}</span>
+								<span>
+									{item.startsAt.substring(5, 7)}/{item.startsAt.substring(8, 10)}
+								</span>
 								<span>{item.startsAt.substring(11, 16)}</span>
 							</div>
 							<div className='pair__teams'>
-								<span>{item.teamMatches[0].team.name}</span>
-								<span>{item.teamMatches[1].team.name}</span>
+								<span>{item.homeTeam.name}</span>
+								<span>{item.awayTeam.name}</span>
 							</div>
 							<div className='pair__quotas'>
-								{item.pairs.map(value => {
+								{item.betOffers.map((value, secondKey) => {
 									return (
 										<button
 											className='quotas__quota'
+											time={item.startsAt}
+											hometeam={item.homeTeam.name}
+											awayteam={item.awayTeam.name}
+											bettype={value.betType.type}
+											startsat={item.startsAt}
 											onClick={() =>
 												this.props.pairHandler(
-													item.teamMatches[0].team.name,
-													item.teamMatches[1].team.name,
-													value.betTypeId,
+													item.homeTeam.name,
+													item.awayTeam.name,
+													value.betType.type,
 													value.matchId,
 													value.quota,
 													value.id,
 													item.isTopOffer,
-													item.startsAt
+													item.startsAt,
+													item.sport.name
 												)
 											}>
 											{value.quota}
@@ -57,6 +65,7 @@ class PairList extends Component {
 									);
 								})}
 							</div>
+							<span className='pair__sport'>{item.sport.name}</span>
 						</div>
 					);
 				})}

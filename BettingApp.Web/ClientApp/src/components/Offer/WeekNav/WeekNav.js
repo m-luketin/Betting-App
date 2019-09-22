@@ -19,6 +19,9 @@ class WeekNav extends Component {
 	}
 
 	getWeekday(daysToAdd) {
+		if (daysToAdd === 7) return 'ALL';
+		else if (daysToAdd === 8) return 'TOP';
+
 		let today = new Date();
 		let day = (today.getDay() + daysToAdd) % 7;
 
@@ -46,40 +49,23 @@ class WeekNav extends Component {
 		this.setColor();
 		return (
 			<div className='week-nav'>
-				<div className='week-nav__row'>
-					<button
-						className='weekday-button'
-						onClick={() => this.props.dayHandler(0)}>
-						{this.getWeekday(0)}
-					</button>
-					<button className='weekday-button' onClick={() => this.props.dayHandler(1)}>
-						{this.getWeekday(1)}
-					</button>
-					<button className='weekday-button' onClick={() => this.props.dayHandler(2)}>
-						{this.getWeekday(2)}
-					</button>
-				</div>
-				<div className='week-nav__row'>
-					<button className='weekday-button' onClick={() => this.props.dayHandler(3)}>
-						{this.getWeekday(3)}
-					</button>
-					<button className='weekday-button' onClick={() => this.props.dayHandler(4)}>
-						{this.getWeekday(4)}
-					</button>
-					<button className='weekday-button' onClick={() => this.props.dayHandler(5)}>
-						{this.getWeekday(5)}
-					</button>
-				</div>
-				<div className='week-nav__row'>
-					<button className='weekday-button' onClick={() => this.props.dayHandler(6)}>
-						{this.getWeekday(6)}
-					</button>
-					<button
-						className='weekday-button weekday-button--wide'
-						onClick={() => this.props.topOfferHandler()}>
-						TOP OFFER
-					</button>
-				</div>
+				{[0, 1, 2].map(firstIndex => {
+					return (
+						<div className='week-nav__row'>
+							{[0, 1, 2].map(secondIndex => {
+								return (
+									<button
+										className='weekday-button'
+										onClick={() =>
+											this.props.dayHandler((firstIndex * 3) + secondIndex)
+										}>
+										{this.getWeekday((firstIndex * 3) + secondIndex)}
+									</button>
+								);
+							})}
+						</div>
+					);
+				})}
 			</div>
 		);
 	}

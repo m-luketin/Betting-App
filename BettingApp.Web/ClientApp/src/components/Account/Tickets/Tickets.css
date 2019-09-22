@@ -9,7 +9,7 @@
 }
 
 .tickets__ticket-view {
-    width: 350px;
+    width: 450px;
     background-color: white;
     border: 1px solid black;
     margin-top: 30px;
@@ -26,7 +26,7 @@
 .ticket-view__pairs-view {
     display: flex;
     flex-direction: column;
-    margin: 15px 0px;
+    margin: 15px 0;
 }
 
 .pairs-view__pair-view {
@@ -36,7 +36,7 @@
     border-bottom: 1px dashed black;
     border-top: 1px dashed black;
     margin: -0.5px;
-    padding: 10px 10px 10px 0px;
+    padding: 10px 10px 10px 0;
 }
 
 .pair-view__time {

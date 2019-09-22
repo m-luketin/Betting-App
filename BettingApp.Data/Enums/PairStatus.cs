@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BettingApp.Data.Enums
 {
-    public enum PairStatus
+    public enum BetOfferStatus
     {
         InProgress,
         IsCorrect,

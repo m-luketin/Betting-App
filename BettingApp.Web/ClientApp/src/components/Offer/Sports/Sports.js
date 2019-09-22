@@ -55,6 +55,11 @@ class Sports extends Component {
 						onClick={() => this.props.sportHandler('Cricket')}>
 						Cricket
 					</span>
+					<span
+						className='links__link'
+						onClick={() => this.props.sportHandler('All')}>
+						All
+					</span>
 				</div>
 			</div>
 		);

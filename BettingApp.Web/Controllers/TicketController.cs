@@ -29,7 +29,7 @@ namespace BettingApp.Web.Controllers
             var pairIdJson = data["pairIds"];
             var pairIds = pairIdJson.Select(x => (int)x).ToList();
             
-            var wasAddSuccessful = _ticketRepository.AddTicket(moneyBet, totalQuota, pairIds);
+            var wasAddSuccessful = _ticketRepository.AddTicket(moneyBet, pairIds);
 
             if(wasAddSuccessful)
                 return Ok();

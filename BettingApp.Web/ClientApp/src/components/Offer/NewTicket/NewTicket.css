@@ -98,14 +98,30 @@
 
 .pairs__pair {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     font-weight: 600;
     font-size: 18px;
-    width: 430px;
+    width: 100%;
     border-bottom: 1px dashed black;
-    padding: 50px 0px 50px 10px;
-    height: 60px;
+    height: 100px;
+    padding: 0 5px 10px 5px;
+}
+
+.pair__wrapper {
+    display:flex;
+}
+
+.pair__delete {
+    font-size: 17px;
+    font-weight: 900;
+    width: 25px;
+    color:black;
+    background-color: red;
+    border: 1px solid black;
+    text-align: center;
+    height: 25px;
 }
 
 .ticket-pair__time{
@@ -116,9 +132,7 @@
 }
 
 .ticket-pair__teams {
-    width: 200px;
     height: 40px;
-    font-size: 18px;
     margin-top: 15px;
     display: flex;
     flex-direction:column;
@@ -126,13 +140,18 @@
     text-align: center;
 }
 
-.pair__bettype {
-    margin-right: 50px;
-    margin-top: 10px;
+.ticket-pair__details {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    font-size: 15px;
+    height: 50px;
 }
 
-.pair__quota {
-    margin-top: 10px;
+.ticket-pair__bettype, .ticket-pair__quota, .ticket-pair__sport {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .new-ticket__warning {
@@ -145,4 +164,11 @@
 
 .display-none {
     display: none;
+}
+
+.new-ticket__disclaimer{
+    font-size: 10px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
 }
