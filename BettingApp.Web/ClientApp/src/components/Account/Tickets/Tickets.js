@@ -24,11 +24,19 @@ class Tickets extends Component {
 							<div className='ticket-view__pairs-view'>
 								{ticket.ticketPairs.map((ticketPair, key) => {
 									return (
-										<div key ={key} className='pairs-view__pair-view'>
+										<div key={key} className='pairs-view__pair-view'>
+											<div className='pair-view__time'>
+												<span>{ticketPair.pair.match.startsAt.substring(5, 10)}</span>
+												<span>{ticketPair.pair.match.startsAt.substring(11, 16)}</span>
+											</div>
 											<div className='pair-view__teams'>
 												{ticketPair.pair.match.teamMatches.map(
 													(teamMatch, key) => {
-														return <span key={key}>{teamMatch.team.name}</span>;
+														return (
+															<span key={key}>
+																{teamMatch.team.name}
+															</span>
+														);
 													}
 												)}
 											</div>

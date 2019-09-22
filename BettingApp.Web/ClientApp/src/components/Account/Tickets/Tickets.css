@@ -9,7 +9,7 @@
 }
 
 .tickets__ticket-view {
-    width: 300px;
+    width: 350px;
     background-color: white;
     border: 1px solid black;
     margin-top: 30px;
@@ -36,14 +36,31 @@
     border-bottom: 1px dashed black;
     border-top: 1px dashed black;
     margin: -0.5px;
-    padding: 10px 0px;
+    padding: 10px 10px 10px 0px;
+}
+
+.pair-view__time {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
 }
 
 .pair-view__teams {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 150px;
+    align-items: center;
+    width: 148px;
+    font-size: 15px;
+}
+
+.pair-view__bet-type{
+    width: 20px;
+    text-align: center;
+}
+
+.pair-view__quota{
+    width: 20px;
+    text-align: center;
 }
 
 .ticket__detail {
